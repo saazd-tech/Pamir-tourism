@@ -35,15 +35,17 @@
                 <form id="listing-form" novalidate>
                     <div class="field">
                         <label for="places" data-i18n="places">Туристические места</label>
-                        <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
+                        <div class="input-with-action">
+                            <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
+                            <button id="choose-map-btn" class="btn-map" type="button">На карте</button>
+                        </div>
                         <datalist id="places-options"></datalist>
                         <small id="hint-places" data-i18n="hintPlaces">Выберите место из подсказок или введите своё.</small>
                     </div>
                     <div class="field">
                         <label for="gallery" data-i18n="gallery">Фото и видео галерея</label>
-                        <input id="gallery" class="input" type="text" list="gallery-options" autocomplete="off" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
-                        <datalist id="gallery-options"></datalist>
-                        <small id="hint-gallery" data-i18n="hintGallery">Введите название галереи или выберите из подсказок.</small>
+                        <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
+                        <small id="hint-gallery" data-i18n="hintGallery">Выберите файл с фото или видео.</small>
                     </div>
                     <div class="field">
                         <label for="articles" data-i18n="articles">Статьи и блог</label>
