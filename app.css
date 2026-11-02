@@ -228,6 +228,7 @@ small {
 
 .file-trigger {
     min-width: 110px;
+    align-self: flex-start;
 }
 
 .file-trigger:hover,

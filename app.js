@@ -15,12 +15,13 @@ const TEXT = {
         gallery: 'Фото и видео галерея',
         articles: 'Статьи и блог',
         map: 'Интерактивная карта',
+        chooseFile: 'Выбрать файл',
         hintPlaces: 'Выберите место из подсказок или введите своё.',
         hintGallery: 'Введите название галереи или выберите из подсказок.',
         hintArticles: 'Выберите идею статьи или введите свой заголовок.',
         hintMap: 'Выберите маршрут или введите место на карте.',
         submit: 'Добавить объявление',
-        updateListing: 'Сохранить измене��ия',
+        updateListing: 'Сохранить изменения',
         newAction: '+ Новое',
         cancel: 'Отмена',
         editAction: 'Редактировать',
@@ -51,6 +52,7 @@ const TEXT = {
         gallery: 'Photo & Video Gallery',
         articles: 'Articles & Blog',
         map: 'Interactive Map',
+        chooseFile: 'Choose file',
         hintPlaces: 'Choose a suggested destination or type another place in Tajikistan.',
         hintGallery: 'Enter a gallery name or choose a suggested photo collection.',
         hintArticles: 'Choose an article idea or enter your own title.',
@@ -87,6 +89,7 @@ const TEXT = {
         gallery: 'Галереяи акс ва видео',
         articles: 'Мақолаҳо ва блог',
         map: 'Харитаи интерактивӣ',
+        chooseFile: 'Файлро интихоб кунед',
         hintPlaces: 'Ҷойро аз пешниҳодҳо интихоб кунед ё ҷойи худро ворид намоед.',
         hintGallery: 'Номи галереяро ворид кунед ё аз пешниҳодҳо интихоб намоед.',
         hintArticles: 'Ғояи мақоларо интихоб кунед ё сарлавҳаи худро ворид намоед.',
@@ -124,6 +127,8 @@ const emptyEl = document.getElementById('empty');
 const newButton = document.getElementById('btn-new');
 const formTitleEl = document.getElementById('new-title');
 const galleryFileNameInput = document.getElementById('gallery-file-name');
+const fileLabel = document.querySelector('.file-trigger');
+const fileInput = document.getElementById('gallery');
 const inputs = Object.fromEntries(KEYS.map(key => [key, document.getElementById(key)]));
 
 let lang = 'ru';
@@ -151,6 +156,7 @@ function setFormMode() {
 function resetForm() {
     form.reset();
     if (galleryFileNameInput) galleryFileNameInput.value = '';
+    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
     editingId = null;
     setFormMode();
     inputs.places.focus();
@@ -244,6 +250,11 @@ function applyLanguage() {
         if (key && t[key] !== undefined) el.placeholder = t[key];
     });
     document.querySelectorAll('[data-lang]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)));
+
+    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
+    if (galleryFileNameInput && !galleryFileNameInput.value) {
+        galleryFileNameInput.placeholder = lang === 'ru' ? 'Файл не выбран' : lang === 'en' ? 'No file selected' : 'Файл интихоб нашудааст';
+    }
 
     KEYS.forEach(key => {
         const datalist = document.getElementById(key + '-options');
@@ -386,16 +397,17 @@ mapValueButtons.forEach(button => {
     });
 });
 
-const fileLabel = document.querySelector('.file-trigger');
+const updateButtonLabel = () => {
+    if (!fileLabel || !fileInput) return;
+    const fileName = fileInput.files && fileInput.files.length ? fileInput.files[0].name : '';
+    fileLabel.textContent = fileName ? fileLabel.dataset.defaultText || TEXT[lang].chooseFile : TEXT[lang].chooseFile;
+    if (galleryFileNameInput) {
+        galleryFileNameInput.value = fileName;
+    }
+};
+
 if (fileLabel) {
-    const fileInput = document.getElementById('gallery');
-    const updateButtonLabel = () => {
-        const fileName = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0].name : '';
-        fileLabel.textContent = fileName || 'Choose File';
-        if (galleryFileNameInput) {
-            galleryFileNameInput.value = fileName;
-        }
-    };
+    fileLabel.dataset.defaultText = TEXT[lang].chooseFile;
     fileInput.addEventListener('change', updateButtonLabel);
     updateButtonLabel();
 }
@@ -403,7 +415,9 @@ if (fileLabel) {
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     lang = btn.dataset.lang;
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* ignore */ }
+    if (fileLabel) fileLabel.dataset.defaultText = TEXT[lang].chooseFile;
     applyLanguage();
+    updateButtonLabel();
 }));
 
 newButton.addEventListener('click', () => {
@@ -456,6 +470,7 @@ form.addEventListener('submit', async event => {
 
     form.reset();
     if (galleryFileNameInput) galleryFileNameInput.value = '';
+    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
     const wasEditing = Boolean(editingId);
     editingId = null;
     setFormMode();
