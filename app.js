@@ -36,11 +36,18 @@ const TEXT = {
     savedLocal: 'Сервер недоступен: объявление сохранено только в этом браузере.',
     failed: 'Не удалось сохранить объявление.',
     deletedLocal: 'Объявление удалено только в этом браузере.',
+    brandLabel: 'Админ-панель туризма',
+    langLabel: 'Выбор языка',
+    placesLabel: 'Поле выбора туристических мест',
+    galleryLabel: 'Поле загрузки фото и видео',
+    selectedFile: 'Выбранный файл',
+    articlesLabel: 'Поле для статей и блога',
+    mapLabel: 'Поле интерактивной карты',
     options: {
       places: ['Памирский тракт', 'Ваханская долина', 'Гарм-Чашма', 'Крепость Ямчун'],
       gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости'],
-      articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучшая пора для путешествия по Памиру', 'Гид по горным озёрам Таджикистана'],
-      map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкашим']
+      articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучшая пора для путешествия в горы', 'Гид по озёрам Таджикистана'],
+      map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкошим']
     }
   },
   en: {
@@ -76,6 +83,13 @@ const TEXT = {
     savedLocal: 'Server unavailable: the listing was saved in this browser only.',
     failed: 'Could not save the listing.',
     deletedLocal: 'The listing was deleted only in this browser.',
+    brandLabel: 'Tourism admin panel',
+    langLabel: 'Language selector',
+    placesLabel: 'Tourist places field',
+    galleryLabel: 'Photo and video upload field',
+    selectedFile: 'Selected file',
+    articlesLabel: 'Articles and blog field',
+    mapLabel: 'Interactive map field',
     options: {
       places: ['Pamir Highway', 'Wakhan Valley', 'Garm-Chashma', 'Yamchun Fortress'],
       gallery: ['Pamir mountain landscapes', 'Wakhan Valley photo collection', 'Tajikistan lakes and rivers', 'Historic fortresses'],
@@ -116,10 +130,17 @@ const TEXT = {
     savedLocal: 'Сервер дастнорас аст: эълон танҳо дар ин браузер захира шуд.',
     failed: 'Эълонро захира кардан муяссар нашуд.',
     deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
+    brandLabel: 'Панели идоракунии сайёҳӣ',
+    langLabel: 'Интихобкунандаи забон',
+    placesLabel: 'Майдони ҷойҳои сайёҳӣ',
+    galleryLabel: 'Майдони боргузории акс ва видео',
+    selectedFile: 'Файли интихобшуда',
+    articlesLabel: 'Майдони мақолаҳо ва блог',
+    mapLabel: 'Майдони харитаи интерактивӣ',
     options: {
       places: ['Роҳи Помир', 'Водии Вахон', 'Гармчашма', 'Қалъаи Ямчун'],
       gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ'],
-      articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Рӯйхати кӯлҳои кӯҳии Тоҷикистон'],
+      articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар', 'Роҳнамо барои кӯлҳои Тоҷикистон'],
       map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
     }
   }
@@ -171,9 +192,10 @@ function setStatus(message, kind = '') {
 }
 
 function getSuggestionOptions(key) {
-  const current = TEXT[lang]?.options?.[key] || [];
-  const base = TEXT.ru.options[key] || [];
-  return [...new Set([...base, ...current].filter(Boolean))];
+  const current = Array.isArray(TEXT[lang]?.options?.[key]) ? TEXT[lang].options[key] : [];
+  if (current.length) return [...new Set(current)];
+  const fallback = Array.isArray(TEXT.ru.options?.[key]) ? TEXT.ru.options[key] : [];
+  return [...new Set(fallback)];
 }
 
 function renderDatalists() {
@@ -315,6 +337,11 @@ function applyLanguage() {
     if (t[key] !== undefined) el.textContent = t[key];
   });
 
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    const key = el.dataset.i18nAria;
+    if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+  });
+
   document.querySelectorAll('[data-lang]').forEach((btn) => {
     btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
   });
@@ -350,7 +377,7 @@ async function fetchJSON(path, options = {}) {
     const response = await fetch(path, { ...options, signal: controller.signal });
     const data = await response.json();
     return { ok: response.ok, data };
-  } catch (error) {
+  } catch {
     return { ok: false, data: { message: TEXT[lang].failed } };
   } finally {
     clearTimeout(timeout);
