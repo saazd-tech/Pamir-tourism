@@ -1,0 +1,102 @@
+[
+  {
+    "id": "khorog",
+    "title": "Хорог",
+    "category": "city",
+    "lat": 37.4917,
+    "lng": 71.5558,
+    "description": "Город среди гор и отправная точка для знакомства с Памиром.",
+    "tags": "Город · прогулки · культура",
+    "query": "Khorog Tajikistan"
+  },
+  {
+    "id": "garden",
+    "title": "Памирский ботанический сад",
+    "category": "nature",
+    "lat": 37.4808,
+    "lng": 71.5942,
+    "description": "Сад рядом с Хорогом: прогулка среди растений и виды на горную долину.",
+    "tags": "Природа · прогулки",
+    "query": "Pamir Botanical Garden Khorog"
+  },
+  {
+    "id": "garm",
+    "title": "Гарм-Чашма",
+    "category": "spring",
+    "lat": 37.2038,
+    "lng": 71.537,
+    "description": "Горячие минеральные источники и необычные природные натёчные образования.",
+    "tags": "Источники · отдых",
+    "query": "Garm Chashma Tajikistan"
+  },
+  {
+    "id": "wakhan",
+    "title": "Ваханская долина",
+    "category": "nature",
+    "lat": 37.043,
+    "lng": 72.67,
+    "description": "Горные пейзажи, поселения и крепости. Точка на карте обозначает район Лангара в долине.",
+    "tags": "Долина · пейзажи · культура",
+    "query": "Langar Wakhan Tajikistan"
+  },
+  {
+    "id": "yamchun",
+    "title": "Крепость Ямчун",
+    "category": "history",
+    "lat": 36.579,
+    "lng": 72.15,
+    "description": "Крепость на склоне над Ваханской долиной с панорамным видом на горы.",
+    "tags": "История · архитектура",
+    "query": "Yamchun Fortress Tajikistan"
+  },
+  {
+    "id": "bibi",
+    "title": "Источники Биби Фотима",
+    "category": "spring",
+    "lat": 36.585934,
+    "lng": 72.154901,
+    "description": "Горячие источники неподалёку от крепости Ямчун. Можно совместить посещение двух мест.",
+    "tags": "Источники · традиции",
+    "query": "Bibi Fatima hot springs Tajikistan"
+  },
+  {
+    "id": "yashil",
+    "title": "Озеро Яшилькуль",
+    "category": "nature",
+    "lat": 37.75,
+    "lng": 72.9,
+    "description": "Высокогорное озеро Восточного Памира, окружённое суровыми горными ландшафтами.",
+    "tags": "Озеро · фотографии",
+    "query": "Yashilkul Tajikistan"
+  },
+  {
+    "id": "murghab",
+    "title": "Мургаб",
+    "category": "city",
+    "lat": 38.17,
+    "lng": 73.965,
+    "description": "Высокогорный городок и остановка для знакомства с Восточным Памиром.",
+    "tags": "Город · горные ландшафты",
+    "query": "Murghab Tajikistan"
+  },
+  {
+    "id": "karakul",
+    "title": "Озеро Каракуль",
+    "category": "nature",
+    "lat": 39.04,
+    "lng": 73.3917,
+    "description": "Большое высокогорное озеро Восточного Памира с открытыми панорамами.",
+    "tags": "Озеро · пейзажи",
+    "query": "Karakul Lake Tajikistan"
+  },
+  {
+    "id": "kalai",
+    "title": "Калай-Хумб",
+    "category": "city",
+    "lat": 38.46639,
+    "lng": 70.79667,
+    "description": "Остановка на дороге к Памиру, откуда можно продолжить путешествие к Хорогу.",
+    "tags": "Город · маршрут",
+    "query": "Kalai Khumb Tajikistan"
+  }
+]

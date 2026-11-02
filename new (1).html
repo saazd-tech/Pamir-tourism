@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по Памиру</title>
+    <link rel="stylesheet" href="./new.css?v=12">
+    <link rel="stylesheet" href="./aos-master/dist/aos.css">
+    <link rel="stylesheet" href="./assets/leaflet/leaflet.css">
+</head>
+
+<body>
+    <header class="journey-hero" id="top">
+        <div class="journey-shell">
+            <nav class="journey-nav" aria-label="Главная навигация">
+                <a class="journey-brand" href="#top" aria-label="Памир — главная"><span class="brand-mountain" aria-hidden="true">△</span> PAMIR<span class="brand-dot">.</span></a>
+                <div class="journey-links">
+                    <a href="#destinations">Направления</a><a href="#stays">Где остановиться</a><a href="#experiences">Маршруты</a><a href="#culture">Культура</a><a href="#faq">FAQ</a><a href="./main.html">Админ-панель</a>
+                </div>
+                <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="tj" aria-pressed="false">TJ</button></div>
+                <a class="journey-nav-cta" href="#destinations">Исследовать <span aria-hidden="true">↗</span></a>
+            </nav>
+            <div class="journey-content">
+                <p class="journey-eyebrow"><span></span> ПАМИР / ГОРЫ / ВАША ИСТОРИЯ</p>
+                <h1>Ближе<br>к <em>небу.</em></h1>
+                <p class="journey-description">Дальше от привычного. По дорогам Памира —<br class="journey-break"> к древним крепостям, горным долинам<br class="journey-break"> и встречам, которые остаются с вами.</p>
+                <div class="journey-actions">
+                    <a class="journey-primary" href="#destinations">Открыть направления <span aria-hidden="true">↗</span></a>
+                    <a class="journey-secondary" href="#culture">Почувствовать Памир <span aria-hidden="true">↓</span></a>
+                </div>
+            </div>
+            <div class="journey-bottom"><span>✦ &nbsp; НЕИЗВЕДАННОЕ БЛИЖЕ, ЧЕМ КАЖЕТСЯ</span><a href="#destinations">ВАШЕ ПУТЕШЕСТВИЕ НАЧИНАЕТСЯ ЗДЕСЬ <span aria-hidden="true">↓</span></a></div>
+        </div>
+    </header>
+    <!-- ---------------------- -->
+    <div class="div-of-div" id="destinations">
+        <div>
+            <h2 class="h2">Памир и горные маршруты</h2>
+            <p class="text">Ваханская долина, Гарм-Чашма и дорога на Калай-Хумб</p>
+        </div>
+        <div>
+
+            <a class="all" href="#hotels">Смотреть все &gt;</a>
+        </div>
+    </div>
+    <div class="the-parent">
+        <div data-aos="fade-down" class="img-div"><div><h4 class="sth">Дорога на Памир</h4><p class="destination-description">Горный маршрут через Калай-Хумб</p></div></div>
+        <div data-aos="fade-down" class="img-div1"><div><h4 class="a1">Гарм-Чашма</h4><p class="destination-description">Горячие источники в ГБАО</p></div></div>
+        <div data-aos="fade-down" class="img-div3"><div><h4 class="a1">Крепость Ямчун</h4><p class="destination-description">Историческая крепость в Ваханской долине</p></div></div>
+        <div data-aos="fade-down" class="garden-card"><div><h4 class="a1">Ботанический сад Хорога</h4><p class="destination-description">Добавьте прогулку по саду в свой маршрут по Хорогу</p></div></div>
+    </div>
+
+    <!-- ------------------ -->
+    <section class="explore-section" id="hotels" aria-labelledby="explore-title">
+    <div class="explore-heading"><div><p class="culture-eyebrow">ВАШ ПАМИР · ТОЧКА ЗА ТОЧКОЙ</p><h2 id="explore-title">Места для путешествий</h2></div><p>Выберите место в списке или нажмите на точку.<br>Приближайте карту, чтобы увидеть соседние места.</p></div>
+    <div class="explore-tools"><label class="place-search">Поиск места<input id="place-search" type="search" placeholder="Например, Яшилькуль" autocomplete="off"></label><label class="place-search">Что интересно<select id="place-category"><option value="all">Все места</option><option value="city">Города</option><option value="nature">Природа</option><option value="spring">Источники</option><option value="history">История</option></select></label><button type="button" id="map-reset">Показать всё ↗</button></div>
+    <p id="place-count" class="stay-count" role="status" aria-live="polite">10 мест для вашего маршрута</p>
+    <div class="explore-layout"><div class="place-list" id="place-list" aria-label="Места Памира"></div><div class="map-column"><div id="pamir-map" aria-label="Интерактивная карта мест Памира"></div><p id="map-status" class="map-note">Точки обозначают места и районы, а не готовый автомобильный маршрут.</p><article id="place-detail" class="place-detail" aria-live="polite"></article></div></div>
+    <noscript><p>Включите JavaScript для карты. <a href="https://www.google.com/maps/search/Pamir+Tajikistan" target="_blank" rel="noopener noreferrer">Открыть Памир на карте ↗</a></p></noscript>
+    </section>
+    <section class="culture-section" id="culture" aria-labelledby="culture-title">
+        <p class="culture-eyebrow">ЛЮДИ · ВКУСЫ · ТРАДИЦИИ</p>
+        <h2 id="culture-title">Душа Памира</h2>
+        <p class="culture-intro">Культура, которую хочется узнать ближе.</p>
+        <div class="culture-grid">
+            <article class="culture-card"><a href="https://www.youtube.com/watch?v=4sP_d4Czwvc" target="_blank" rel="noopener noreferrer" aria-label="Памирский дом: Посмотреть дом (новая вкладка)"><div class="culture-photo culture-home" role="img" aria-label="Памирский дом"><span class="culture-play" aria-hidden="true">▶</span></div><div class="culture-copy"><h3>Памирский дом</h3><p>Чид — традиционный дом, где архитектура связана с семейными и духовными традициями. Пять опорных столбов и потолок чорхона — его узнаваемые черты.</p><span class="culture-cta">Посмотреть дом ↗</span></div></a></article>
+            <article class="culture-card"><a href="https://www.youtube.com/watch?v=ve2hfJtdnqo" target="_blank" rel="noopener noreferrer" aria-label="Национальная одежда: Смотреть видео (новая вкладка)"><div class="culture-photo culture-dress" role="img" aria-label="Национальная одежда"><span class="culture-play" aria-hidden="true">▶</span></div><div class="culture-copy"><h3>Национальная одежда</h3><p>Вышитые тюбетейки, яркие ткани и орнаменты рассказывают о местных традициях. Познакомьтесь с праздничными нарядами жителей Памира.</p><span class="culture-cta">Смотреть видео ↗</span></div></a></article>
+            <article class="culture-card"><a href="https://www.youtube.com/results?search_query=%D0%BF%D0%B0%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%88%D0%B8%D1%80%D1%87%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BA%20%D0%BF%D1%80%D0%B8%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%B8%D1%82%D1%8C%20%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82" target="_blank" rel="noopener noreferrer" aria-label="Вкус Памира: Найти рецепты на YouTube (новая вкладка)"><div class="culture-photo culture-food" role="img" aria-label="Вкус Памира"><span class="culture-play" aria-hidden="true">▶</span></div><div class="culture-copy"><h3>Вкус Памира</h3><p>Ширчой — горячий чай с молоком, солью и сливочным маслом. Откройте рецепты и узнайте, как приготовить его дома.</p><span class="culture-cta">Найти рецепты на YouTube ↗</span></div></a></article>
+            <article class="culture-card"><a href="https://www.youtube.com/results?search_query=%D0%BF%D0%B0%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D1%83%D0%B1%D0%B0%D0%B1%20%D0%B4%D0%B0%D1%84%20%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0" target="_blank" rel="noopener noreferrer" aria-label="Музыка Памира: Найти музыку на YouTube (новая вкладка)"><div class="culture-photo culture-music" role="img" aria-label="Музыка Памира"><span class="culture-play" aria-hidden="true">▶</span></div><div class="culture-copy"><h3>Музыка Памира</h3><p>Струнный рубаб и ритмы дафа сопровождают песни и музыкальные традиции региона. Послушайте звучание памирских инструментов.</p><span class="culture-cta">Найти музыку на YouTube ↗</span></div></a></article>
+        </div>
+        <details class="culture-sources"><summary>Подробнее о традициях: источники</summary><a href="https://www.advantour.com/rus/tajikistan/culture/pamir.htm" target="_blank" rel="noopener noreferrer">Памирская культура</a><a href="https://www.russianfood.com/recipes/recipe.php?rid=64005" target="_blank" rel="noopener noreferrer">Состав и приготовление ширчоя</a></details>
+    </section>
+<!-- ------------- -->
+
+    <section class="stay-section" id="stays" aria-labelledby="stay-title">
+        <div class="stay-heading"><div><p class="culture-eyebrow">ОТДОХНУТЬ И ПРОДОЛЖИТЬ ПУТЬ</p><h2 id="stay-title">Где остановиться</h2></div><p>Выберите точку на маршруте.<br>Найдите жильё и свяжитесь с хозяевами напрямую.</p></div>
+        <div class="stay-filters" role="group" aria-label="Выбор района проживания" hidden>
+            <button type="button" data-stay-filter="all" aria-pressed="true">Все места</button>
+            <button type="button" data-stay-filter="khorog" aria-pressed="false">Хорог</button>
+            <button type="button" data-stay-filter="wakhan" aria-pressed="false">Ваханская долина</button>
+            <button type="button" data-stay-filter="murghab" aria-pressed="false">Мургаб</button>
+        </div>
+        <p class="stay-count" role="status" aria-live="polite">Показано вариантов: 3</p>
+        <div class="stay-grid">
+            <article class="stay-card" data-stay-region="khorog"><div class="stay-location"><span>Хорог</span><span class="stay-number">01</span></div><div class="stay-body"><span class="stay-type">Гостевой дом</span><h3>Lalmo Homestay</h3><p class="stay-why">Для остановки в Хороге</p><p class="stay-description">Семейный гостевой дом: вариант для знакомства с городом перед продолжением маршрута.</p><div class="stay-actions"><a class="stay-map" href="https://www.google.com/maps/search/?api=1&amp;query=Lalmo%20Homestay%20Khorog%20Tajikistan" target="_blank" rel="noopener noreferrer">Найти на карте <span aria-hidden="true">↗</span></a><a class="stay-site" href="https://www.oxus-pamir.com/lalmohomestay" target="_blank" rel="noopener noreferrer">Сайт гостевого дома ↗</a></div></div></article>
+            <article class="stay-card" data-stay-region="wakhan"><div class="stay-location"><span>Ваханская долина</span><span class="stay-number">02</span></div><div class="stay-body"><span class="stay-type">Проживание в семье</span><h3>Гостевые дома Лангара</h3><p class="stay-why">Для маршрута по Вахану</p><p class="stay-description">В Лангаре можно остановиться в семейном доме. Выберите вариант на карте и свяжитесь с хозяевами.</p><div class="stay-actions"><a class="stay-map" href="https://www.google.com/maps/search/?api=1&amp;query=homestay%20Langar%20Tajikistan" target="_blank" rel="noopener noreferrer">Найти на карте <span aria-hidden="true">↗</span></a><a class="stay-site" href="https://visitalay.com/ufaq/whats-the-accommodation-like-along-the-pamir-highway-where-will-we-stay/" target="_blank" rel="noopener noreferrer">Об условиях проживания ↗</a></div></div></article>
+            <article class="stay-card" data-stay-region="murghab"><div class="stay-location"><span>Мургаб</span><span class="stay-number">03</span></div><div class="stay-body"><span class="stay-type">Отель</span><h3>Pamir Hotel</h3><p class="stay-why">Для остановки на Памирском тракте</p><p class="stay-description">Посмотрите варианты размещения и контакты на сайте отеля, затем уточните условия на ваши даты.</p><div class="stay-actions"><a class="stay-map" href="https://www.google.com/maps/search/?api=1&amp;query=Pamir%20Hotel%20Murghab%20Tajikistan" target="_blank" rel="noopener noreferrer">Найти на карте <span aria-hidden="true">↗</span></a><a class="stay-site" href="https://pamirhotelmurghab.com/en" target="_blank" rel="noopener noreferrer">Сайт отеля ↗</a></div></div></article>
+        </div>
+        <div class="stay-help"><div><h3>Перед бронированием</h3><p>Цены и наличие мест уточняйте у хозяев на ваши даты. Ссылки открываются в новой вкладке.</p></div><details><summary>Что уточнить у хозяев?</summary><ul><li>Стоимость за ночь и включено ли питание.</li><li>Отдельная ли комната, где находятся душ и туалет.</li><li>Есть ли горячая вода, отопление и электричество.</li><li>Как добраться, во сколько заезд и как оплатить.</li></ul></details></div>
+    </section>
+<!-- ------------------- -->
+    <div class="bg_parent3" id="experiences">
+        <div class="div-div">
+            <div>
+                <div>
+                    <h1>Путешествие по Памиру</h1>
+                    <p class="text-paragraph">Памирский тракт, Ваханская долина и высокогорные ландшафты. Перед поездкой проверьте сезон, состояние дорог и местные требования.</p>
+                    <a class="source-link" href="https://whc.unesco.org/en/list/1252/" target="_blank" rel="noopener noreferrer">Национальный парк Таджикистана в списке ЮНЕСКО</a>
+                </div>
+                <div class="prnt">
+                    <div class="">
+                        <div>
+                            <div class="dv">
+                                <p class="text-paragraph">Ваханская долина и Ямчун</p>
+                            </div>
+                            <div class="dv">
+                                <p class="text-paragraph">Гарм-Чашма</p>
+                            </div>
+                            <div class="dv">
+                                <p class="text-paragraph">Памирский тракт</p>
+                            </div>
+                        </div>
+                        <!-- ------------------------------ -->
+                    </div>
+                    <div class="">
+                        <div class="dv">
+                            <p class="text-paragraph">Калай-Хумб</p>
+                        </div>
+                        <div class="dv">
+                            <p class="text-paragraph">Хорог и окрестности</p>
+                        </div>
+                        <div class="dv">
+                            <p class="text-paragraph">Дорога на Памир</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="png" src="./suraten_tj/road-to-kalai-khumb.jpg" alt="Горная дорога в сторону Калай-Хумба">
+        </div>
+    </div>
+<!-- ------------------------- -->
+    <section class="moments-section" id="reviews"><p class="culture-eyebrow">НЕ ПРОСТО ПОЕЗДКА</p><h2>5 впечатлений, ради которых стоит посетить Памир</h2><p class="culture-intro">Выберите то, что откликается вам. Начните с одного — и соберите свою историю.</p><div class="moments-grid"><a class="moment-card" href="#experiences"><div class="moment-photo moment-road" role="img" aria-label="Проехать по Памирскому тракту"><span class="moment-number">01</span><span class="moment-label">Маршрут</span></div><div class="moment-copy"><h3>Проехать по Памирскому тракту <span aria-hidden="true">↗</span></h3><p>Дорога, где каждый поворот — новый пейзаж.</p></div></a><a class="moment-card" href="#stays"><div class="moment-photo moment-stars" role="img" aria-label="Увидеть звёздное небо"><span class="moment-number">02</span><span class="moment-label">Тишина</span></div><div class="moment-copy"><h3>Увидеть звёздное небо <span aria-hidden="true">↗</span></h3><p>Остаться на вечер вдали от городских огней.</p></div></a><a class="moment-card" href="#hotels"><div class="moment-photo moment-valley" role="img" aria-label="Открыть Ваханскую долину"><span class="moment-number">03</span><span class="moment-label">Открытия</span></div><div class="moment-copy"><h3>Открыть Ваханскую долину <span aria-hidden="true">↗</span></h3><p>Поселения, горные реки и широкие панорамы.</p></div></a><a class="moment-card" href="#hotels"><div class="moment-photo moment-spring" role="img" aria-label="Отдохнуть у горячих источников"><span class="moment-number">04</span><span class="moment-label">Природа</span></div><div class="moment-copy"><h3>Отдохнуть у горячих источников <span aria-hidden="true">↗</span></h3><p>Добавить тёплую остановку в горный маршрут.</p></div></a><a class="moment-card" href="#culture"><div class="moment-photo moment-home" role="img" aria-label="Почувствовать гостеприимство"><span class="moment-number">05</span><span class="moment-label">Традиции</span></div><div class="moment-copy"><h3>Почувствовать гостеприимство <span aria-hidden="true">↗</span></h3><p>Зайти в памирский дом и познакомиться с ширчоем.</p></div></a></div></section>
+    <!-- <div class="cards-parent"> -->
+        <h1 class="text23" id="blog">Идеи для путешествий по Памиру</h1>
+        <p class="text3">Истории о горах, долинах и культуре Памира</p>
+        <div class="pictures">
+            <div  data-aos="zoom-in" class="card-1">
+                <img class="article-image" src="./suraten_tj/road-to-kalai-khumb.jpg" alt="Дорога через горы в сторону Калай-Хумба">
+                <div class="sth3">
+                    <img  src="./assets/icons/calendar.svg" alt="">
+                    <p class="i">Маршрут</p>
+                </div>
+                <h4>В путь через горы: дорога в сторону Калай-Хумба</h4>
+                <a class="j-a" href="#experiences">Смотреть маршрут <img class="icon" src="./assets/icons/arrow.svg" alt=""></a>
+            </div>
+            
+            <div  data-aos="zoom-in"  class="card-1">
+                <img class="article-image" src="./suraten_tj/yamchun-fortress.jpg" alt="Крепость Ямчун">
+                <div class="sth3">
+                    <img  src="./assets/icons/calendar.svg" alt="">
+                    <p class="i">История</p>
+                </div>
+                <h4>Крепость Ямчун: история Ваханской долины</h4>
+                <a class="j-a" href="#hotels">Смотреть места <img src="./assets/icons/arrow.svg" alt=""></a>
+            </div>
+        </div>
+    <!-- </div> -->
+    <!-- ------------------- -->
+    <!-- --------------------- -->
+    <div class="bg_parent4" id="faq">
+        <h1 class="h22">Вопросы о поездке на Памир</h1>
+        <div class="div-parent">
+            <div  data-aos="zoom-out"  class="just-d">
+                <div class="flex">
+                    <h4>Когда лучше ехать в горы?</h4>
+                    <img src="./assets/icons/chevron.svg" alt="">
+                </div>
+                <p class="paragraph">Для большинства горных маршрутов удобнее планировать поездку на тёплый сезон. Погода и доступность дорог зависят от высоты и конкретного региона, поэтому проверяйте условия перед выездом.</p>
+            </div>
+            <div  data-aos="zoom-out"  class="just-d">
+                <div class="flex">
+                    <h4>Нужен ли гид для поездки по Памиру?</h4>
+                    <img src="./assets/icons/chevron.svg" alt="">
+                </div>
+                <p class="paragraph">Для дальних горных маршрутов местный гид поможет спланировать путь и учесть дорожные условия. Перед поездкой уточните актуальные требования для выбранного района.</p>
+            </div>
+            
+            <div  data-aos="zoom-out"  class="just-d">
+                <div class="flex">
+                    <h4>Что взять с собой в горное путешествие?</h4>
+                    <img src="./assets/icons/chevron.svg" alt="">
+                </div>
+                <p class="paragraph">Возьмите удобную обувь, тёплую одежду слоями, воду и защиту от солнца. В горах погода может быстро меняться.</p>
+            </div>
+        </div>
+    </div>
+    <!-- --------------------- -->
+    <div class="header" id="subscribe">
+        <div class="center">
+            <h1>Откройте для себя Памир</h1>
+            <p class="paragraph">Выберите маршрут по Памирскому тракту, загляните в Ваханскую долину и познакомьтесь с горными селениями.</p>
+            <div class="felx">
+                <a class="email" href="#destinations">Популярные направления</a>
+                <a class="subscribe" href="#experiences"><span class="subscribe2">Выбрать маршрут</span> <img class="src" src="assets/icons/arrow.svg" alt=""></a>
+            </div>
+            <p class="text2">Уточняйте погоду, состояние дорог и правила посещения перед поездкой.</p>
+        </div>
+    </div>
+    <!-- ----------------------- -->
+    <div class="bg_parent3">
+        <div class="something">
+            <div class="divs">
+                <a class="footer-brand" href="#top" aria-label="Памир, в начало страницы">
+                    <img src="./suraten_tj/road-to-kalai-khumb.jpg" alt="Горный пейзаж Памира">
+                </a>
+                <p class="text2">Откройте Памир: горные долины, древние крепости и живые традиции. Выбирайте направление и планируйте поездку.</p>
+                <div class="flex2">
+                    <a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="./assets/icons/facebook.svg" alt="">
+                    </a>
+                    <a class="social-link" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+                        <img src="./assets/icons/x.svg" alt="">
+                    </a>
+                    <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <img src="./assets/icons/instagram.svg" alt="">
+                    </a>
+                    <a class="social-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <img src="./assets/icons/youtube.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="divs">
+                <h4>О Памире</h4>
+                <a class="footer-link" href="#culture">Культура Памира</a>
+                <a class="footer-link" href="#destinations">Популярные направления</a>
+                <a class="footer-link" href="#hotels">Рекомендуемые места</a>
+                <a class="footer-link" href="#blog">Статьи о путешествиях</a>
+            </div>
+            <div class="divs">
+                <h4>Путешественникам</h4>
+                <a class="footer-link" href="#stays">Где остановиться</a>
+                <a class="footer-link" href="#reviews">Впечатления Памира</a>
+                <a class="footer-link" href="#faq">Частые вопросы</a>
+                <a class="footer-link" href="#subscribe">Новости и предложения</a>
+            </div>
+            <div class="divs">
+                <h4>Разделы сайта</h4>
+                <a class="footer-link" href="#top">В начало страницы</a>
+                <a class="footer-link" href="#destinations">Направления</a>
+                <a class="footer-link" href="#blog">Блог</a>
+                <a class="footer-link" href="#faq">Помощь туристам</a>
+                <a class="footer-link" href="./main.html">Админ-панель</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------- -->
+        <!-- <div data-aos="fade-down" class="box"></div>
+        
+        <! --- fade up --->
+        <!--- fade down --->
+        <!--- fade left --->
+        <!--- fade rigth --->
+        
+        <!-- <div data-aos="zoom-out" class="box"></div> -->
+
+        <!--- zoom-in --->
+        <!--- zoom-out --->
+
+        <!-- <div data-aos="flip-right" class="box"></div> -->
+
+        <!--- flip-up --->
+        <!--- flip-dowm --->
+        <!--- flip-left --->
+        <!-- - flip-rigth - --> 
+    <!-- ------------------------------------- -->
+        
+    <script src="./aos-master/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false,
+            duration: 800
+        })
+    </script>
+    <script src="./i18n.js"></script>
+    <script src="./pamir-cursor.js?v=3"></script>
+    <script src="./stays.js"></script>
+    <script src="./assets/leaflet/leaflet.js"></script>
+    <script id="places-data" type="application/json">[{"id": "khorog", "title": "Хорог", "category": "city", "lat": 37.4917, "lng": 71.5558, "description": "Город среди гор и отправная точка для знакомства с Памиром.", "tags": "Город · прогулки · культура", "query": "Khorog Tajikistan"}, {"id": "garden", "title": "Памирский ботанический сад", "category": "nature", "lat": 37.4808, "lng": 71.5942, "description": "Сад рядом с Хорогом: прогулка среди растений и виды на горную долину.", "tags": "Природа · прогулки", "query": "Pamir Botanical Garden Khorog"}, {"id": "garm", "title": "Гарм-Чашма", "category": "spring", "lat": 37.2038, "lng": 71.537, "description": "Горячие минеральные источники и необычные природные натёчные образования.", "tags": "Источники · отдых", "query": "Garm Chashma Tajikistan"}, {"id": "wakhan", "title": "Ваханская долина", "category": "nature", "lat": 37.043, "lng": 72.67, "description": "Горные пейзажи, поселения и крепости. Точка на карте обозначает район Лангара в долине.", "tags": "Долина · пейзажи · культура", "query": "Langar Wakhan Tajikistan"}, {"id": "yamchun", "title": "Крепость Ямчун", "category": "history", "lat": 36.579, "lng": 72.15, "description": "Крепость на склоне над Ваханской долиной с панорамным видом на горы.", "tags": "История · архитектура", "query": "Yamchun Fortress Tajikistan"}, {"id": "bibi", "title": "Источники Биби Фотима", "category": "spring", "lat": 36.585934, "lng": 72.154901, "description": "Горячие источники неподалёку от крепости Ямчун. Можно совместить посещение двух мест.", "tags": "Источники · традиции", "query": "Bibi Fatima hot springs Tajikistan"}, {"id": "yashil", "title": "Озеро Яшилькуль", "category": "nature", "lat": 37.75, "lng": 72.9, "description": "Высокогорное озеро Восточного Памира, окружённое суровыми горными ландшафтами.", "tags": "Озеро · фотографии", "query": "Yashilkul Tajikistan"}, {"id": "murghab", "title": "Мургаб", "category": "city", "lat": 38.17, "lng": 73.965, "description": "Высокогорный городок и остановка для знакомства с Восточным Памиром.", "tags": "Город · горные ландшафты", "query": "Murghab Tajikistan"}, {"id": "karakul", "title": "Озеро Каракуль", "category": "nature", "lat": 39.04, "lng": 73.3917, "description": "Большое высокогорное озеро Восточного Памира с открытыми панорамами.", "tags": "Озеро · пейзажи", "query": "Karakul Lake Tajikistan"}, {"id": "kalai", "title": "Калай-Хумб", "category": "city", "lat": 38.46639, "lng": 70.79667, "description": "Остановка на дороге к Памиру, откуда можно продолжить путешествие к Хорогу.", "tags": "Город · маршрут", "query": "Kalai Khumb Tajikistan"}]</script>
+    <script src="./places.js"></script>
+</body>
+
+</html>
