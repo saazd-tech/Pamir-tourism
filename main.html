@@ -1,111 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Админ-панель туризма Таджикистана</title>
-    <link rel="stylesheet" href="./app.css">
-    <link rel="icon" type="images/svg+xml" href="logo.svg">
-</head>
-
-<body>
-    <div class="page">
-        <header class="top">
-            <div class="brand" aria-label="Админ-панель туризм">
-                <div class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 64 64" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="peakSky" x1="0" x2="1" y1="0" y2="1">
-                                <stop offset="0%" stop-color="#d7eef7"/>
-                                <stop offset="100%" stop-color="#bfe0ec"/>
-                            </linearGradient>
-                        </defs>
-                        <circle cx="32" cy="32" r="31" fill="#dfeef4"/>
-                        <path d="M12 42 L22 26 L29 35 L36 21 L48 42 Z" fill="#1f3a4d"/>
-                        <path d="M8 47 L24 33 L34 42 L45 28 L58 47 Z" fill="#5da7c3" opacity="0.9"/>
-                        <path d="M10 50 C18 44, 26 46, 33 48 C41 50, 49 50, 55 45 L55 54 L10 54 Z" fill="#6aa85a"/>
-                        <path d="M22 41 C27 39, 31 37, 38 42 C32 45, 27 47, 22 41 Z" fill="#d6f1ff"/>
-                        <circle cx="32" cy="27" r="5" fill="#f4fbff"/>
-                        <path d="M32 18 L35 24 L41 24 L36 28 L38 34 L32 30 L26 34 L28 28 L23 24 L29 24 Z" fill="#f7fbff"/>
-                    </svg>
-                </div>
-                <h1 id="page-title" data-i18n="title">Админ-панель туризм</h1>
-            </div>
-            <div class="lang" role="group" aria-label="Language">
-                <button type="button" data-lang="ru" aria-pressed="true">RU</button>
-                <button type="button" data-lang="en" aria-pressed="false">EN</button>
-                <button type="button" data-lang="tj" aria-pressed="false">TJ</button>
-            </div>
-        </header>
-
-        <div class="dashboard">
-            <aside class="card sidebar" aria-labelledby="current-title">
-                <div class="sidebar-header">
-                    <h2 id="current-title" data-i18n="currentTitle">Текущие объявления</h2>
-                    <button id="btn-new" class="btn btn-small" type="button" data-i18n="newAction">+ Новое</button>
-                </div>
-
-                <p id="empty" class="empty" data-i18n="empty">Пока нет объявлений.</p>
-                <ul id="listing" class="listing" aria-live="polite"></ul>
-            </aside>
-
-            <section class="card form-card" aria-labelledby="new-title">
-                <h2 id="new-title" data-i18n="newTitle">Новое объявление</h2>
-                <form id="listing-form" novalidate>
-                    <div class="field">
-                        <label for="places" data-i18n="places">Туристические места</label>
-                        <div class="field-control">
-                            <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
-                        </div>
-                        <datalist id="places-options"></datalist>
-                        <small id="hint-places" data-i18n="hintPlaces">Выберите место из подсказок или введите своё.</small>
-                    </div>
-
-                    <div class="field">
-                        <label for="gallery" data-i18n="gallery">Фото и видео галерея</label>
-                        <div class="field-control upload-field">
-                            <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
-                            <input id="gallery-file-name" class="input gallery-file-name" type="text" readonly placeholder="Файл не выбран" aria-label="Выбранный файл">
-                            <label class="file-trigger" for="gallery" data-i18n-file="chooseFile">Выбрать файл</label>
-                        </div>
-                        <small id="hint-gallery" data-i18n="hintGallery">Введите название галереи или выберите из подсказок.</small>
-                    </div>
-
-                    <div class="field">
-                        <label for="articles" data-i18n="articles">Статьи и блог</label>
-                        <input id="articles" class="input" type="text" list="articles-options" autocomplete="off" aria-describedby="hint-articles" data-i18n-placeholder="articles">
-                        <datalist id="articles-options"></datalist>
-                        <small id="hint-articles" data-i18n="hintArticles">Выберите идею статьи или введите свой заголовок.</small>
-                    </div>
-
-                    <div class="field">
-                        <label for="map" data-i18n="map">Интерактивная карта</label>
-                        <div class="field-control">
-                            <input id="map" class="input" type="text" list="map-options" autocomplete="off" aria-describedby="hint-map" data-i18n-placeholder="map">
-                            <div class="field-action right-aligned">
-                                <button type="button" class="map-select-btn" data-map-value="Памирский тракт">На карте</button>
-                            </div>
-                        </div>
-                        <datalist id="map-options"></datalist>
-                        <small id="hint-map" data-i18n="hintMap">Выберите маршрут или введите место на карте.</small>
-                    </div>
-
-                    <div class="actions">
-                        <button id="btn" class="btn" type="submit" data-i18n="submit">Добавить объявление</button>
-                        <button id="btn-cancel" class="btn btn-outline btn-small hidden" type="button" data-i18n="cancel">Отмена</button>
-                        <a class="btn btn-outline" href="./new.html" data-i18n="openSite">Открыть сайт о Памире</a>
-                    </div>
-                    <p id="status" class="status" role="status" aria-live="polite"></p>
-                </form>
-            </section>
-        </div>
-    </div>
-
-    <script src="./app.js"></script>
-</body>
-
-</html> -->
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -114,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель туризма Таджикистана</title>
     <link rel="stylesheet" href="./app.css">
-    <!-- Иконка для вкладки браузера (фавикон) -->
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="icon" type="image/svg+xml" href="./images/logo.svg">
 </head>
 
 <body>
     <div class="page">
         <header class="top">
             <div class="brand" aria-label="Админ-панель туризм">
-                <!-- Значок из шапки полностью удален, остался только заголовок -->
                 <h1 id="page-title" data-i18n="title">Админ-панель туризма Таджикистана</h1>
             </div>
             <div class="lang" role="group" aria-label="Language">
