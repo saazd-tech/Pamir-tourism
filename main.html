@@ -12,13 +12,13 @@
 <body>
     <div class="page">
         <header class="top">
-            <div class="brand" aria-label="Админ-панель туризм">
+            <div class="brand" aria-label="Админ-панель туризма">
                 <h1 id="page-title" data-i18n="title">Админ-панель туризма Таджикистана</h1>
             </div>
-            <div class="lang" role="group" aria-label="Language">
-                <button type="button" data-lang="ru" aria-pressed="true">RU</button>
-                <button type="button" data-lang="en" aria-pressed="false">EN</button>
-                <button type="button" data-lang="tj" aria-pressed="false">TJ</button>
+            <div class="lang" role="group" aria-label="Language" data-i18n-aria="langLabel">
+                <button type="button" data-lang="ru" aria-label="Русский" aria-pressed="true">RU</button>
+                <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                <button type="button" data-lang="tj" aria-label="Тоҷикӣ" aria-pressed="false">TJ</button>
             </div>
         </header>
 
@@ -29,7 +29,7 @@
                     <div class="field">
                         <label for="places" data-i18n="places">Туристические места</label>
                         <div class="field-control">
-                            <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
+                            <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places" data-i18n-aria="placesLabel">
                         </div>
                         <datalist id="places-options"></datalist>
                         <small id="hint-places" data-i18n="hintPlaces">Выберите место из подсказок или введите своё.</small>
@@ -38,8 +38,8 @@
                     <div class="field">
                         <label for="gallery" data-i18n="gallery">Фото и видео галерея</label>
                         <div class="field-control upload-field">
-                            <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
-                            <input id="gallery-file-name" class="input gallery-file-name" type="text" readonly placeholder="Файл не выбран" aria-label="Выбранный файл">
+                            <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery" data-i18n-aria="galleryLabel">
+                            <input id="gallery-file-name" class="input gallery-file-name" type="text" readonly placeholder="Файл не выбран" aria-label="Выбранный файл" data-i18n-aria="selectedFile">
                             <label class="file-trigger" for="gallery" data-i18n-file="chooseFile">Выбрать файл</label>
                         </div>
                         <small id="hint-gallery" data-i18n="hintGallery">Введите название галереи или выберите из подсказок.</small>
@@ -47,7 +47,7 @@
 
                     <div class="field">
                         <label for="articles" data-i18n="articles">Статьи и блог</label>
-                        <input id="articles" class="input" type="text" list="articles-options" autocomplete="off" aria-describedby="hint-articles" data-i18n-placeholder="articles">
+                        <input id="articles" class="input" type="text" list="articles-options" autocomplete="off" aria-describedby="hint-articles" data-i18n-placeholder="articles" data-i18n-aria="articlesLabel">
                         <datalist id="articles-options"></datalist>
                         <small id="hint-articles" data-i18n="hintArticles">Выберите идею статьи или введите свой заголовок.</small>
                     </div>
@@ -55,9 +55,9 @@
                     <div class="field">
                         <label for="map" data-i18n="map">Интерактивная карта</label>
                         <div class="field-control">
-                            <input id="map" class="input" type="text" list="map-options" autocomplete="off" aria-describedby="hint-map" data-i18n-placeholder="map">
+                            <input id="map" class="input" type="text" list="map-options" autocomplete="off" aria-describedby="hint-map" data-i18n-placeholder="map" data-i18n-aria="mapLabel">
                             <div class="field-action right-aligned">
-                                <button type="button" class="map-select-btn" data-map-value="Памирский тракт">На карте</button>
+                                <button type="button" class="map-select-btn" data-map-value="Памирский тракт" data-i18n="mapSelect">На карте</button>
                             </div>
                         </div>
                         <datalist id="map-options"></datalist>
