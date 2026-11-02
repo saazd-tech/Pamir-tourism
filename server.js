@@ -43,7 +43,6 @@ function writeHotels(hotels) {
     fs.writeFileSync(FILE_PATH, JSON.stringify(hotels, null, 2));
 }
 
-
 function readListings() {
     try {
         const data = JSON.parse(fs.readFileSync(LISTINGS_PATH, "utf-8"));
@@ -55,6 +54,20 @@ function readListings() {
 
 function writeListings(listings) {
     fs.writeFileSync(LISTINGS_PATH, JSON.stringify(listings, null, 2));
+}
+
+function normalizeListingPayload(data) {
+    const listing = {};
+    for (const key of ["places", "gallery", "articles", "map"]) {
+        listing[key] = String(data[key] ?? "").trim();
+        if (!listing[key]) {
+            return { ok: false, message: "All four fields are required" };
+        }
+        if (listing[key].length > 300) {
+            return { ok: false, message: "Each field must be 300 characters or less" };
+        }
+    }
+    return { ok: true, listing };
 }
 
 function readBody(req, res, onBody) {
@@ -79,7 +92,7 @@ function readBody(req, res, onBody) {
 
 const CORS = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type"
 };
 
@@ -135,25 +148,63 @@ const server = http.createServer((req, res) => {
         return sendJSON(res, 200, readListings());
     }
 
-    // POST /listings  (tourism admin panel)
+    // POST /listings
     if (method === "POST" && pathname === "/listings") {
         return readBody(req, res, data => {
-            const listing = {};
-            for (const key of ["places", "gallery", "articles", "map"]) {
-                listing[key] = String(data[key] ?? "").trim();
-                if (!listing[key]) {
-                    return sendJSON(res, 400, { message: "All four fields are required" });
-                }
-                if (listing[key].length > 300) {
-                    return sendJSON(res, 400, { message: "Each field must be 300 characters or less" });
-                }
+            const normalized = normalizeListingPayload(data);
+            if (!normalized.ok) {
+                return sendJSON(res, 400, { message: normalized.message });
             }
-            const newListing = { id: Date.now(), ...listing };
+
+            const newListing = { id: Date.now(), ...normalized.listing };
             const listings = readListings();
             listings.push(newListing);
             writeListings(listings);
             sendJSON(res, 201, newListing);
         });
+    }
+
+    // PUT /listings/:id
+    if (method === "PUT" && pathname.startsWith("/listings/")) {
+        const id = Number(pathname.split("/")[2]);
+        if (!Number.isFinite(id)) {
+            return sendJSON(res, 400, { message: "Invalid listing id" });
+        }
+
+        return readBody(req, res, data => {
+            const normalized = normalizeListingPayload(data);
+            if (!normalized.ok) {
+                return sendJSON(res, 400, { message: normalized.message });
+            }
+
+            const listings = readListings();
+            const index = listings.findIndex(item => item.id === id);
+            if (index === -1) {
+                return sendJSON(res, 404, { message: "Listing not found" });
+            }
+
+            listings[index] = { ...listings[index], ...normalized.listing };
+            writeListings(listings);
+            sendJSON(res, 200, listings[index]);
+        });
+    }
+
+    // DELETE /listings/:id
+    if (method === "DELETE" && pathname.startsWith("/listings/")) {
+        const id = Number(pathname.split("/")[2]);
+        if (!Number.isFinite(id)) {
+            return sendJSON(res, 400, { message: "Invalid listing id" });
+        }
+
+        const listings = readListings();
+        const index = listings.findIndex(item => item.id === id);
+        if (index === -1) {
+            return sendJSON(res, 404, { message: "Listing not found" });
+        }
+
+        listings.splice(index, 1);
+        writeListings(listings);
+        return sendJSON(res, 200, { ok: true });
     }
 
     // GET /hotels
@@ -238,3 +289,768 @@ server.listen(PORT, () => {
     console.log(`Admin panel:  http://localhost:${PORT}/main.html`);
     console.log(`Tourism site: http://localhost:${PORT}/new.html`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

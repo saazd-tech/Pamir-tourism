@@ -19,8 +19,18 @@
             </div>
         </header>
 
-        <div class="columns">
-            <section class="card" aria-labelledby="new-title">
+        <div class="dashboard">
+            <aside class="card sidebar" aria-labelledby="current-title">
+                <div class="sidebar-header">
+                    <h2 id="current-title" data-i18n="currentTitle">Текущие объявления</h2>
+                    <button id="btn-new" class="btn btn-small" type="button" data-i18n="newAction">+ Новое</button>
+                </div>
+
+                <p id="empty" class="empty" data-i18n="empty">Пока нет объявлений.</p>
+                <ul id="listing" class="listing" aria-live="polite"></ul>
+            </aside>
+
+            <section class="card form-card" aria-labelledby="new-title">
                 <h2 id="new-title" data-i18n="newTitle">Новое объявление</h2>
                 <form id="listing-form" novalidate>
                     <div class="field">
@@ -49,17 +59,12 @@
                     </div>
 
                     <div class="actions">
-                        <button id="btn" class="btn" type="submit" data-i18n="submit">Обновить объявление</button>
+                        <button id="btn" class="btn" type="submit" data-i18n="submit">Добавить объявление</button>
+                        <button id="btn-cancel" class="btn btn-outline btn-small hidden" type="button" data-i18n="cancel">Отмена</button>
                         <a class="btn btn-outline" href="./new.html" data-i18n="openSite">Открыть сайт о Памире</a>
                     </div>
                     <p id="status" class="status" role="status" aria-live="polite"></p>
                 </form>
-            </section>
-
-            <section class="card" aria-labelledby="current-title">
-                <h2 id="current-title" data-i18n="currentTitle">Текущие объявления</h2>
-                <p id="empty" class="empty" data-i18n="empty">Пока нет объявлений.</p>
-                <ul id="listing" class="listing"></ul>
             </section>
         </div>
     </div>

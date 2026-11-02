@@ -8,6 +8,7 @@ const TEXT = {
     ru: {
         title: 'Админ-панель туризма Таджикистана',
         newTitle: 'Новое объявление',
+        editTitle: 'Редактировать объявление',
         currentTitle: 'Текущие объявления',
         empty: 'Пока нет объявлений.',
         places: 'Туристические места',
@@ -18,23 +19,32 @@ const TEXT = {
         hintGallery: 'Введите название галереи или выберите из подсказок.',
         hintArticles: 'Выберите идею статьи или введите свой заголовок.',
         hintMap: 'Выберите маршрут или введите место на карте.',
-        submit: 'Обновить объявление',
+        submit: 'Добавить объявление',
+        updateListing: 'Сохранить изменения',
+        newAction: '+ Новое',
+        cancel: 'Отмена',
+        editAction: 'Редактировать',
+        deleteAction: 'Удалить',
         openSite: 'Открыть сайт о Памире',
         fillAll: 'Заполните все четыре поля.',
         saving: 'Сохранение...',
-        saved: 'Объявление обновлено.',
+        saved: 'Объявление добавлено.',
+        updated: 'Объявление обновлено.',
+        deleted: 'Объявление удалено.',
         savedLocal: 'Сервер недоступен: объявление сохранено только в этом браузере.',
         failed: 'Не удалось сохранить объявление.',
+        deletedLocal: 'Объявление удалено только в этом браузере.',
         options: {
             places: ['Памирский тракт', 'Ваханская долина'],
             gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические места и крепости'],
-            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для поездки на Памир', 'Путеводитель по горным озёрам Таджикистана'],
-            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкашим']
+            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия по Памиру', 'Гид по озёрам и горным дорогам Таджикистана'],
+            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкатим']
         }
     },
     en: {
         title: 'Tajikistan Tourism Admin Panel',
         newTitle: 'New listing',
+        editTitle: 'Edit listing',
         currentTitle: 'Current listings',
         empty: 'No listings yet.',
         places: 'Tourist Places',
@@ -45,13 +55,21 @@ const TEXT = {
         hintGallery: 'Enter a gallery name or choose a suggested photo collection.',
         hintArticles: 'Choose an article idea or enter your own title.',
         hintMap: 'Choose a route to highlight or type a map location.',
-        submit: 'Update listing',
+        submit: 'Add listing',
+        updateListing: 'Save changes',
+        newAction: '+ New',
+        cancel: 'Cancel',
+        editAction: 'Edit',
+        deleteAction: 'Delete',
         openSite: 'Open tourism website',
         fillAll: 'Fill in all four fields.',
         saving: 'Saving...',
-        saved: 'Listing updated.',
+        saved: 'Listing added.',
+        updated: 'Listing updated.',
+        deleted: 'Listing deleted.',
         savedLocal: 'Server unavailable: the listing was saved in this browser only.',
         failed: 'Could not save the listing.',
+        deletedLocal: 'The listing was deleted only in this browser.',
         options: {
             places: ['Pamir Highway', 'Wakhan Valley'],
             gallery: ['Pamir mountain landscapes', 'Wakhan Valley photo collection', 'Tajikistan lakes and rivers', 'Historic sites and fortresses'],
@@ -62,6 +80,7 @@ const TEXT = {
     tj: {
         title: 'Панели идоракунии сайёҳии Тоҷикистон',
         newTitle: 'Эълони нав',
+        editTitle: 'Таҳрири эълон',
         currentTitle: 'Эълонҳои ҷорӣ',
         empty: 'Ҳоло эълон нест.',
         places: 'Ҷойҳои сайёҳӣ',
@@ -72,17 +91,25 @@ const TEXT = {
         hintGallery: 'Номи галереяро ворид кунед ё аз пешниҳодҳо интихоб намоед.',
         hintArticles: 'Ғояи мақоларо интихоб кунед ё сарлавҳаи худро ворид намоед.',
         hintMap: 'Масирро интихоб кунед ё ҷойро дар харита ворид намоед.',
-        submit: 'Эълонро навсозӣ кунед',
+        submit: 'Илова кардани эълон',
+        updateListing: 'Сақл кардани тағйирот',
+        newAction: '+ Нав',
+        cancel: 'Бекор',
+        editAction: 'Таҳрир',
+        deleteAction: 'Нест кардан',
         openSite: 'Сайти Помирро кушоед',
         fillAll: 'Ҳар чор майдонро пур кунед.',
         saving: 'Захира карда истодааст...',
-        saved: 'Эълон навсозӣ шуд.',
+        saved: 'Эълон илова шуд.',
+        updated: 'Эълон навсозӣ шуд.',
+        deleted: 'Эълон нест карда шуд.',
         savedLocal: 'Сервер дастнорас аст: эълон танҳо дар ин браузер захира шуд.',
         failed: 'Эълонро захира кардан муяссар нашуд.',
+        deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
         options: {
             places: ['Роҳи Помир', 'Водии Вахон'],
             gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Ҷойҳои таърихӣ ва қалъаҳо'],
-            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамои кӯлҳои кӯҳии Тоҷикистон'],
+            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамо барои кӯлҳо ва роҳҳои Тоҷикистон'],
             map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
         }
     }
@@ -90,13 +117,17 @@ const TEXT = {
 
 const form = document.getElementById('listing-form');
 const button = document.getElementById('btn');
+const cancelButton = document.getElementById('btn-cancel');
 const statusEl = document.getElementById('status');
 const listEl = document.getElementById('listing');
 const emptyEl = document.getElementById('empty');
+const newButton = document.getElementById('btn-new');
+const formTitleEl = document.getElementById('new-title');
 const inputs = Object.fromEntries(KEYS.map(key => [key, document.getElementById(key)]));
 
 let lang = 'ru';
 let listings = [];
+let editingId = null;
 
 try {
     const saved = localStorage.getItem(LANG_KEY);
@@ -108,6 +139,22 @@ function setStatus(message, kind = '') {
     statusEl.className = 'status' + (kind ? ' is-' + kind : '');
 }
 
+function setFormMode() {
+    const t = TEXT[lang];
+    formTitleEl.textContent = editingId ? t.editTitle : t.newTitle;
+    button.textContent = editingId ? t.updateListing : t.submit;
+    cancelButton.textContent = t.cancel;
+    cancelButton.classList.toggle('hidden', !editingId);
+}
+
+function resetForm() {
+    form.reset();
+    editingId = null;
+    setFormMode();
+    inputs.places.focus();
+    setStatus('');
+}
+
 function renderListings() {
     const t = TEXT[lang];
     listEl.replaceChildren();
@@ -115,15 +162,67 @@ function renderListings() {
 
     [...listings].reverse().forEach(item => {
         const li = document.createElement('li');
-        const dl = document.createElement('dl');
-        KEYS.forEach(key => {
-            const dt = document.createElement('dt');
-            dt.textContent = t[key];
-            const dd = document.createElement('dd');
-            dd.textContent = item[key];
-            dl.append(dt, dd);
+        li.className = 'listing-item' + (editingId === item.id ? ' is-active' : '');
+
+        const header = document.createElement('div');
+        header.className = 'listing-header';
+
+        const title = document.createElement('strong');
+        title.textContent = `#${item.id}`;
+        header.appendChild(title);
+
+        const actions = document.createElement('div');
+        actions.className = 'listing-actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.className = 'mini-btn mini-btn-edit';
+        editBtn.textContent = t.editAction;
+        editBtn.addEventListener('click', () => {
+            editingId = item.id;
+            KEYS.forEach(key => {
+                inputs[key].value = item[key] ?? '';
+            });
+            setFormMode();
+            setStatus('');
+            inputs.places.focus();
         });
-        li.append(dl);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'mini-btn mini-btn-delete';
+        deleteBtn.textContent = t.deleteAction;
+        deleteBtn.addEventListener('click', async () => {
+            const ok = window.confirm(t.deleteAction + '?');
+            if (!ok) return;
+            const result = await deleteListing(item.id);
+            if (result.error) {
+                setStatus(result.error, 'error');
+                return;
+            }
+            if (editingId === item.id) resetForm();
+            await loadListings();
+            setStatus(result.local ? t.deletedLocal : t.deleted, 'ok');
+        });
+
+        actions.append(editBtn, deleteBtn);
+        header.appendChild(actions);
+
+        const meta = document.createElement('div');
+        meta.className = 'listing-meta';
+
+        KEYS.forEach(key => {
+            const row = document.createElement('p');
+            row.className = 'listing-row';
+            const label = document.createElement('span');
+            label.textContent = t[key] + ':';
+            const value = document.createElement('strong');
+            value.textContent = item[key] || '—';
+            row.append(label, value);
+            meta.appendChild(row);
+        });
+
+        li.append(header, meta);
         listEl.append(li);
     });
 }
@@ -133,8 +232,14 @@ function applyLanguage() {
     document.documentElement.lang = lang === 'tj' ? 'tg' : lang;
     document.title = t.title;
 
-    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t[el.dataset.i18n]; });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = t[el.dataset.i18nPlaceholder]; });
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (key && t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (key && t[key] !== undefined) el.placeholder = t[key];
+    });
     document.querySelectorAll('[data-lang]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)));
 
     KEYS.forEach(key => {
@@ -146,6 +251,7 @@ function applyLanguage() {
         }));
     });
 
+    setFormMode();
     renderListings();
     setStatus('');
 }
@@ -184,7 +290,22 @@ async function loadListings() {
     renderListings();
 }
 
+function validateListingValues(values) {
+    for (const key of KEYS) {
+        const value = String(values[key] ?? '').trim();
+        if (!value) return { error: TEXT[lang].fillAll };
+        if (value.length > 300) return { error: 'Each field must be 300 characters or less' };
+        values[key] = value;
+    }
+    return { ok: true };
+}
+
 async function saveListing(values) {
+    const valid = validateListingValues(values);
+    if (!valid.ok) {
+        return { error: valid.error };
+    }
+
     try {
         const { ok, data } = await fetchJSON('/listings', {
             method: 'POST',
@@ -204,6 +325,54 @@ async function saveListing(values) {
     }
 }
 
+async function updateListing(id, values) {
+    const valid = validateListingValues(values);
+    if (!valid.ok) {
+        return { error: valid.error };
+    }
+
+    try {
+        const { ok, data } = await fetchJSON(`/listings/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values)
+        });
+        if (!ok) return { error: data.message };
+        return { item: data, local: false };
+    } catch {
+        const list = readLocal();
+        const index = list.findIndex(item => item.id === id);
+        if (index === -1) return { error: TEXT[lang].failed };
+
+        const updated = { ...list[index], ...values };
+        list[index] = updated;
+        try {
+            localStorage.setItem(LIST_KEY, JSON.stringify(list));
+        } catch {
+            return { error: TEXT[lang].failed };
+        }
+        return { item: updated, local: true };
+    }
+}
+
+async function deleteListing(id) {
+    try {
+        const { ok, data } = await fetchJSON(`/listings/${id}`, {
+            method: 'DELETE'
+        });
+        if (!ok) return { error: data.message };
+        return { local: false };
+    } catch {
+        const list = readLocal().filter(item => item.id !== id);
+        try {
+            localStorage.setItem(LIST_KEY, JSON.stringify(list));
+        } catch {
+            return { error: TEXT[lang].failed };
+        }
+        return { local: true };
+    }
+}
+
 /* ---- events ---- */
 
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
@@ -211,6 +380,14 @@ document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('cl
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* ignore */ }
     applyLanguage();
 }));
+
+newButton.addEventListener('click', () => {
+    resetForm();
+});
+
+cancelButton.addEventListener('click', () => {
+    resetForm();
+});
 
 KEYS.forEach(key => inputs[key].addEventListener('input', () => inputs[key].removeAttribute('aria-invalid')));
 
@@ -236,7 +413,14 @@ form.addEventListener('submit', async event => {
 
     button.disabled = true;
     setStatus(t.saving);
-    const result = await saveListing(values);
+
+    let result;
+    if (editingId) {
+        result = await updateListing(editingId, values);
+    } else {
+        result = await saveListing(values);
+    }
+
     button.disabled = false;
 
     if (result.error) {
@@ -245,9 +429,12 @@ form.addEventListener('submit', async event => {
     }
 
     form.reset();
-    inputs.places.focus();
+    const wasEditing = Boolean(editingId);
+    editingId = null;
+    setFormMode();
     await loadListings();
-    setStatus(result.local ? t.savedLocal : t.saved, 'ok');
+    setStatus(wasEditing ? t.updated : (result.local ? t.savedLocal : t.saved), 'ok');
+    inputs.places.focus();
 });
 
 applyLanguage();
