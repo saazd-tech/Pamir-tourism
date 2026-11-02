@@ -1,6 +1,7 @@
 const LIST_KEY = 'tajikistanTourismListings';
 const LANG_KEY = 'tajikistanTourismLang';
 const KEYS = ['places', 'gallery', 'articles', 'map'];
+const REQUIRED_KEYS = ['places', 'articles', 'map'];
 
 const TEXT = {
   ru: {
@@ -28,7 +29,7 @@ const TEXT = {
     fileNotSelected: 'Файл не выбран',
     mapSelect: 'На карте',
     fileSelected: 'Выбран файл:',
-    fillAll: 'Заполните все четыре поля.',
+    fillAll: 'Заполните все обязательные поля.',
     saving: 'Сохранение...',
     saved: 'Объявление добавлено.',
     updated: 'Объявление обновлено.',
@@ -39,7 +40,7 @@ const TEXT = {
     brandLabel: 'Админ-панель туризма',
     langLabel: 'Выбор языка',
     placesLabel: 'Поле выбора туристических мест',
-    galleryLabel: 'Поле загрузки фото и в��део',
+    galleryLabel: 'Поле загрузки фото и видео',
     selectedFile: 'Выбранный файл',
     articlesLabel: 'Поле для статей и блога',
     mapLabel: 'Поле интерактивной карты',
@@ -75,7 +76,7 @@ const TEXT = {
     fileNotSelected: 'No file selected',
     mapSelect: 'On map',
     fileSelected: 'Selected file:',
-    fillAll: 'Fill in all four fields.',
+    fillAll: 'Fill in all required fields.',
     saving: 'Saving...',
     saved: 'Listing added.',
     updated: 'Listing updated.',
@@ -122,7 +123,7 @@ const TEXT = {
     fileNotSelected: 'Файл интихоб нашудааст',
     mapSelect: 'Дар харита',
     fileSelected: 'Файл интихоб шуд:',
-    fillAll: 'Ҳар чор майдонро пур кунед.',
+    fillAll: 'Ҳар се майдонро пур кунед.',
     saving: 'Захира карда истодааст...',
     saved: 'Эълон илова шуд.',
     updated: 'Эълон навсозӣ шуд.',
@@ -193,18 +194,17 @@ function setStatus(message, kind = '') {
 
 function getLocalizedValue(key, rawValue) {
   if (!rawValue || typeof rawValue !== 'string') return rawValue;
-  const text = TEXT;
-  const localeValues = Object.keys(text).map((locale) => text[locale].options?.[key] || []).flat();
   const normalized = rawValue.trim();
+  const localeOptions = TEXT;
+
+  if (key === 'gallery' && !normalized) return '';
 
   for (const locale of ['ru', 'tj', 'en']) {
-    const values = text[locale].options?.[key] || [];
+    const values = localeOptions[locale].options?.[key] || [];
     const index = values.findIndex((value) => value === normalized);
     if (index >= 0) {
-      const target = text[lang]?.options?.[key];
-      if (Array.isArray(target) && target[index]) {
-        return target[index];
-      }
+      const target = localeOptions[lang]?.options?.[key] || [];
+      if (target[index]) return target[index];
     }
   }
 
@@ -328,7 +328,8 @@ function renderListings() {
       const label = document.createElement('span');
       label.textContent = t[key] + ':';
       const value = document.createElement('strong');
-      value.textContent = getLocalizedValue(key, item[key]) || '—';
+      const displayValue = getLocalizedValue(key, item[key]);
+      value.textContent = displayValue || '—';
       row.append(label, value);
       meta.appendChild(row);
     });
@@ -374,10 +375,13 @@ function applyLanguage() {
 }
 
 function validateValues(values) {
-  for (const key of KEYS) {
+  for (const key of REQUIRED_KEYS) {
     const value = String(values[key] ?? '').trim();
     if (!value) return { error: TEXT[lang].fillAll };
     values[key] = value;
+  }
+  if (values.gallery !== undefined && values.gallery !== null) {
+    values.gallery = String(values.gallery).trim();
   }
   return { ok: true };
 }
@@ -518,7 +522,7 @@ if (form) {
         ? galleryInput.files[0].name
         : (inputs[key]?.value || '').trim();
       values[key] = sourceValue;
-      if (!sourceValue) {
+      if (REQUIRED_KEYS.includes(key) && !sourceValue) {
         inputs[key]?.setAttribute('aria-invalid', 'true');
         if (!firstInvalid) firstInvalid = inputs[key];
       }
