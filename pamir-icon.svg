@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="26" y1="19" x2="132" y2="153" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFF3F8"/>
+      <stop offset="1" stop-color="#BCE2EC"/>
+    </linearGradient>
+    <linearGradient id="river" x1="47" y1="96" x2="118" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#84CCE0"/>
+      <stop offset="1" stop-color="#2C7CA3"/>
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="76" fill="#E3EEF2"/>
+  <path d="M18 93C34 58 43 38 54 25C69 43 80 58 86 67C95 62 101 57 109 55C119 71 132 86 142 100C132 121 113 138 85 141C52 145 32 128 18 93Z" fill="#184D65"/>
+  <path d="M32 90L49 64L67 92L84 67L100 95L118 65L138 96L146 106H34L32 90Z" fill="#0E3A52"/>
+  <path d="M42 77L57 54L70 72L86 52L101 71L115 54L131 76L146 62L155 88H40L42 77Z" fill="#E7F3F8"/>
+  <path d="M24 97C50 107 73 111 92 110C118 108 137 101 158 85C158 105 143 120 118 130C87 144 48 139 24 97Z" fill="#245F7D" fill-opacity="0.9"/>
+  <path d="M47 105C63 88 88 66 119 83C119 102 103 116 82 121C66 124 52 118 47 105Z" fill="url(#river)"/>
+  <path d="M31 106C41 96 49 88 62 84C78 79 94 83 101 92C113 92 126 96 133 104C121 122 104 132 81 133C56 134 39 124 31 106Z" fill="#EFF8FA"/>
+  <circle cx="79" cy="82" r="18" fill="#EDF7FA" stroke="#173E5B" stroke-width="5"/>
+  <circle cx="79" cy="82" r="9" fill="none" stroke="#173E5B" stroke-width="3"/>
+  <path d="M62 82H96M79 65V99M66 69L92 95M66 95L92 69" stroke="#173E5B" stroke-width="3" stroke-linecap="round"/>
+</svg>
