@@ -54,7 +54,7 @@ a {
 .brand {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     min-width: 0;
 }
 
