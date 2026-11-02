@@ -15,7 +15,6 @@ const TEXT = {
         gallery: 'Фото и видео галерея',
         articles: 'Статьи и блог',
         map: 'Интерактивная карта',
-        chooseFile: 'Выбрать файл',
         hintPlaces: 'Выберите место из подсказок или введите своё.',
         hintGallery: 'Введите название галереи или выберите из подсказок.',
         hintArticles: 'Выберите идею статьи или введите свой заголовок.',
@@ -27,6 +26,8 @@ const TEXT = {
         editAction: 'Редактировать',
         deleteAction: 'Удалить',
         openSite: 'Открыть сайт о Памире',
+        chooseFile: 'Выбрать файл',
+        fileSelected: 'Выбран файл:',
         fillAll: 'Заполните все четыре поля.',
         saving: 'Сохранение...',
         saved: 'Объявление добавлено.',
@@ -37,9 +38,9 @@ const TEXT = {
         deletedLocal: 'Объявление удалено только в этом браузере.',
         options: {
             places: ['Памирский тракт', 'Ваханская долина', 'Гарм-Чашма', 'Крепость Ямчун'],
-            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости Таджикистана'],
-            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для поездки по Памиру', 'Гид по озёрам Таджикистана'],
-            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишким']
+            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости и маршруты'],
+            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия по Памиру', 'Гид по природным ландшафтам Таджикистана'],
+            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма и путь в сторону Ишкашима']
         }
     },
     en: {
@@ -52,7 +53,6 @@ const TEXT = {
         gallery: 'Photo & Video Gallery',
         articles: 'Articles & Blog',
         map: 'Interactive Map',
-        chooseFile: 'Choose file',
         hintPlaces: 'Choose a suggested destination or type another place in Tajikistan.',
         hintGallery: 'Enter a gallery name or choose a suggested photo collection.',
         hintArticles: 'Choose an article idea or enter your own title.',
@@ -64,6 +64,8 @@ const TEXT = {
         editAction: 'Edit',
         deleteAction: 'Delete',
         openSite: 'Open tourism website',
+        chooseFile: 'Choose file',
+        fileSelected: 'Selected file:',
         fillAll: 'Fill in all four fields.',
         saving: 'Saving...',
         saved: 'Listing added.',
@@ -89,9 +91,8 @@ const TEXT = {
         gallery: 'Галереяи акс ва видео',
         articles: 'Мақолаҳо ва блог',
         map: 'Харитаи интерактивӣ',
-        chooseFile: 'Файлро интихоб кунед',
         hintPlaces: 'Ҷойро аз пешниҳодҳо интихоб кунед ё ҷойи худро ворид намоед.',
-        hintGallery: 'Номи галереяро ворид кунед ё аз пешниҳодҳо интихоб намоед.',
+        hintGallery: 'Номи галереяро ворид кунед ё аз прапанкӣ интихоб намоед.',
         hintArticles: 'Ғояи мақоларо интихоб кунед ё сарлавҳаи худро ворид намоед.',
         hintMap: 'Масирро интихоб кунед ё ҷойро дар харита ворид намоед.',
         submit: 'Илова кардани эълон',
@@ -101,6 +102,8 @@ const TEXT = {
         editAction: 'Таҳрир',
         deleteAction: 'Нест кардан',
         openSite: 'Сайти Помирро кушоед',
+        chooseFile: 'Файли интихоб',
+        fileSelected: 'Файл интихоб шуд:',
         fillAll: 'Ҳар чор майдонро пур кунед.',
         saving: 'Захира карда истодааст...',
         saved: 'Эълон илова шуд.',
@@ -111,8 +114,8 @@ const TEXT = {
         deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
         options: {
             places: ['Роҳи Помир', 'Водии Вахон', 'Гармчашма', 'Қалъаи Ямчун'],
-            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихии Тоҷикистон'],
-            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамо барои кӯлҳои Тоҷикистон'],
+            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ ва роҳҳо'],
+            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафари Помир', 'Роҳнамо оид ба манзараҳои кӯҳии Тоҷикистон'],
             map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
         }
     }
@@ -126,9 +129,8 @@ const listEl = document.getElementById('listing');
 const emptyEl = document.getElementById('empty');
 const newButton = document.getElementById('btn-new');
 const formTitleEl = document.getElementById('new-title');
-const galleryFileNameInput = document.getElementById('gallery-file-name');
-const fileLabel = document.querySelector('.file-trigger');
-const fileInput = document.getElementById('gallery');
+const galleryFileName = document.getElementById('gallery-file-name');
+const fileTrigger = document.querySelector('.file-trigger');
 const inputs = Object.fromEntries(KEYS.map(key => [key, document.getElementById(key)]));
 
 let lang = 'ru';
@@ -151,12 +153,27 @@ function setFormMode() {
     button.textContent = editingId ? t.updateListing : t.submit;
     cancelButton.textContent = t.cancel;
     cancelButton.classList.toggle('hidden', !editingId);
+    if (fileTrigger) fileTrigger.textContent = t.chooseFile;
+}
+
+function updateGalleryFileName() {
+    if (!galleryFileName) return;
+    const file = inputs.gallery.files && inputs.gallery.files[0];
+    if (file) {
+        galleryFileName.value = file.name;
+        galleryFileName.hidden = false;
+    } else {
+        galleryFileName.value = '';
+        galleryFileName.hidden = true;
+    }
 }
 
 function resetForm() {
     form.reset();
-    if (galleryFileNameInput) galleryFileNameInput.value = '';
-    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
+    if (galleryFileName) {
+        galleryFileName.value = '';
+        galleryFileName.hidden = true;
+    }
     editingId = null;
     setFormMode();
     inputs.places.focus();
@@ -191,7 +208,7 @@ function renderListings() {
             KEYS.forEach(key => {
                 inputs[key].value = item[key] ?? '';
             });
-            if (galleryFileNameInput) galleryFileNameInput.value = item.gallery || '';
+            updateGalleryFileName();
             setFormMode();
             setStatus('');
             inputs.places.focus();
@@ -251,24 +268,40 @@ function applyLanguage() {
     });
     document.querySelectorAll('[data-lang]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)));
 
-    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
-    if (galleryFileNameInput && !galleryFileNameInput.value) {
-        galleryFileNameInput.placeholder = lang === 'ru' ? 'Файл не выбран' : lang === 'en' ? 'No file selected' : 'Файл интихоб нашудааст';
-    }
-
     KEYS.forEach(key => {
         const datalist = document.getElementById(key + '-options');
-        datalist.replaceChildren(...t.options[key].map(value => {
-            const option = document.createElement('option');
-            option.value = value;
-            return option;
-        }));
+        if (datalist) {
+            datalist.replaceChildren(...t.options[key].map(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                return option;
+            }));
+        }
     });
 
+    if (fileTrigger) fileTrigger.textContent = t.chooseFile;
     setFormMode();
     renderListings();
     setStatus('');
 }
+
+window.TOURISM_LANG = {
+    get lang() { return lang; },
+    setLang(nextLang) {
+        if (nextLang !== 'ru' && nextLang !== 'en' && nextLang !== 'tj') return;
+        lang = nextLang;
+        try { localStorage.setItem(LANG_KEY, lang); } catch { /* ignore */ }
+        applyLanguage();
+    }
+};
+
+window.addEventListener('storage', event => {
+    if (event.key !== LANG_KEY) return;
+    if (event.newValue === 'ru' || event.newValue === 'en' || event.newValue === 'tj') {
+        lang = event.newValue;
+        applyLanguage();
+    }
+});
 
 function readLocal() {
     try {
@@ -397,27 +430,18 @@ mapValueButtons.forEach(button => {
     });
 });
 
-const updateButtonLabel = () => {
-    if (!fileLabel || !fileInput) return;
-    const fileName = fileInput.files && fileInput.files.length ? fileInput.files[0].name : '';
-    fileLabel.textContent = fileName ? fileLabel.dataset.defaultText || TEXT[lang].chooseFile : TEXT[lang].chooseFile;
-    if (galleryFileNameInput) {
-        galleryFileNameInput.value = fileName;
-    }
-};
+if (inputs.gallery) {
+    inputs.gallery.addEventListener('change', updateGalleryFileName);
+}
 
-if (fileLabel) {
-    fileLabel.dataset.defaultText = TEXT[lang].chooseFile;
-    fileInput.addEventListener('change', updateButtonLabel);
-    updateButtonLabel();
+if (galleryFileName) {
+    galleryFileName.hidden = true;
 }
 
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     lang = btn.dataset.lang;
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* ignore */ }
-    if (fileLabel) fileLabel.dataset.defaultText = TEXT[lang].chooseFile;
     applyLanguage();
-    updateButtonLabel();
 }));
 
 newButton.addEventListener('click', () => {
@@ -469,11 +493,13 @@ form.addEventListener('submit', async event => {
     }
 
     form.reset();
-    if (galleryFileNameInput) galleryFileNameInput.value = '';
-    if (fileLabel) fileLabel.textContent = TEXT[lang].chooseFile;
     const wasEditing = Boolean(editingId);
     editingId = null;
     setFormMode();
+    if (galleryFileName) {
+        galleryFileName.value = '';
+        galleryFileName.hidden = true;
+    }
     await loadListings();
     setStatus(wasEditing ? t.updated : (result.local ? t.savedLocal : t.saved), 'ok');
     inputs.places.focus();
