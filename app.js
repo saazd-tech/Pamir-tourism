@@ -371,7 +371,6 @@ async function deleteListing(id) {
     }
 }
 
-// map selection event
 const mapValueButtons = document.querySelectorAll('[data-map-value]');
 mapValueButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -384,12 +383,15 @@ mapValueButtons.forEach(button => {
     });
 });
 
-// file selection visual behaviour
-if (inputs.gallery) {
-    inputs.gallery.addEventListener('change', () => {
-        const fileName = inputs.gallery.files && inputs.gallery.files.length ? inputs.gallery.files[0].name : 'No file chosen';
-        inputs.gallery.title = fileName;
-    });
+const fileLabel = document.querySelector('.file-trigger');
+if (fileLabel) {
+    const fileInput = document.getElementById('gallery');
+    const updateButtonLabel = () => {
+        const fileName = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0].name : 'Choose File';
+        fileLabel.textContent = fileName;
+    };
+    fileInput.addEventListener('change', updateButtonLabel);
+    updateButtonLabel();
 }
 
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {

@@ -35,15 +35,24 @@
                 <form id="listing-form" novalidate>
                     <div class="field">
                         <label for="places" data-i18n="places">Туристические места</label>
-                        <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
-                        <button type="button" class="map-select-btn" data-map-value="Памирский тракт">На карте</button>
+                        <div class="field-control">
+                            <input id="places" class="input" type="text" list="places-options" autocomplete="off" aria-describedby="hint-places" data-i18n-placeholder="places">
+                            <div class="field-action right-aligned">
+                                <button type="button" class="map-select-btn" data-map-value="Памирский тракт">На карте</button>
+                            </div>
+                        </div>
                         <datalist id="places-options"></datalist>
                         <small id="hint-places" data-i18n="hintPlaces">Выберите место из подсказок или введите своё.</small>
                     </div>
 
                     <div class="field">
                         <label for="gallery" data-i18n="gallery">Фото и видео галерея</label>
-                        <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
+                        <div class="field-control">
+                            <input id="gallery" class="input input-file" type="file" accept="image/*,video/*" aria-describedby="hint-gallery" data-i18n-placeholder="gallery">
+                            <div class="field-action right-aligned">
+                                <label class="file-trigger" for="gallery">Choose File</label>
+                            </div>
+                        </div>
                         <small id="hint-gallery" data-i18n="hintGallery">Введите название галереи или выберите из подсказок.</small>
                     </div>
 
@@ -56,8 +65,12 @@
 
                     <div class="field">
                         <label for="map" data-i18n="map">Интерактивная карта</label>
-                        <input id="map" class="input" type="text" list="map-options" autocomplete="off" aria-describedby="hint-map" data-i18n-placeholder="map">
-                        <button type="button" class="map-select-btn map-select-inline" data-map-value="Памирский тракт">На карте</button>
+                        <div class="field-control">
+                            <input id="map" class="input" type="text" list="map-options" autocomplete="off" aria-describedby="hint-map" data-i18n-placeholder="map">
+                            <div class="field-action right-aligned">
+                                <button type="button" class="map-select-btn" data-map-value="Памирский тракт">На карте</button>
+                            </div>
+                        </div>
                         <datalist id="map-options"></datalist>
                         <small id="hint-map" data-i18n="hintMap">Выберите маршрут или введите место на карте.</small>
                     </div>

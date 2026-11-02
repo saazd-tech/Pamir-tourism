@@ -148,6 +148,20 @@ label {
     color: #1d3d48;
 }
 
+.field-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-action {
+    display: flex;
+}
+
+.right-aligned {
+    justify-content: flex-end;
+}
+
 .input {
     width: 100%;
     height: 42px;
@@ -184,29 +198,17 @@ small {
 }
 
 .input-file {
-    padding: 8px 12px;
-    line-height: 1.5;
+    display: block;
 }
 
-.input-file::file-selector-button {
-    margin-right: 12px;
-    border: 1px solid rgba(25, 64, 76, 0.55);
-    border-radius: 5px;
-    background: #f5f7f8;
-    color: var(--ink);
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-}
-
+.file-trigger,
 .map-select-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-width: 96px;
-    height: 28px;
-    margin-top: 8px;
+    height: 30px;
+    padding: 0 14px;
     border: 1px solid rgba(22, 104, 116, 0.5);
     border-radius: 6px;
     background: rgba(243, 248, 249, 0.9);
@@ -218,15 +220,25 @@ small {
     transition: all 0.15s ease;
 }
 
+.file-trigger {
+    min-width: 110px;
+}
+
+.file-trigger:hover,
 .map-select-btn:hover,
+.file-trigger:focus-visible,
 .map-select-btn:focus-visible {
     border-color: var(--teal);
     background: rgba(218, 245, 249, 0.9);
     outline: none;
 }
 
-.map-select-inline {
-    margin-top: 8px;
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .actions {
