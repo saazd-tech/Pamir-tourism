@@ -35,10 +35,10 @@ const TEXT = {
         failed: 'Не удалось сохранить объявление.',
         deletedLocal: 'Объявление удалено только в этом браузере.',
         options: {
-            places: ['Памирский тракт', 'Ваханская долина'],
-            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические места и крепости'],
-            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия по Памиру', 'Гид по озёрам и горным дорогам Таджикистана'],
-            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкатим']
+            places: ['Памирский тракт', 'Ваханская долина', 'Гарм-Чашма', 'Крепость Ямчун'],
+            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости'],
+            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия', 'Гид по горным озёрам Таджикистана'],
+            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкошим']
         }
     },
     en: {
@@ -71,9 +71,9 @@ const TEXT = {
         failed: 'Could not save the listing.',
         deletedLocal: 'The listing was deleted only in this browser.',
         options: {
-            places: ['Pamir Highway', 'Wakhan Valley'],
-            gallery: ['Pamir mountain landscapes', 'Wakhan Valley photo collection', 'Tajikistan lakes and rivers', 'Historic sites and fortresses'],
-            articles: ['Planning a trip along the Pamir Highway', 'What to see in the Wakhan Valley', 'Best season for a Pamir journey', "A guide to Tajikistan's mountain lakes"],
+            places: ['Pamir Highway', 'Wakhan Valley', 'Garm-Chashma', 'Yamchun Fortress'],
+            gallery: ['Pamir mountain landscapes', 'Wakhan Valley photo collection', 'Tajikistan lakes and rivers', 'Historic fortresses'],
+            articles: ['Planning a trip along the Pamir Highway', 'What to see in the Wakhan Valley', 'Best season for a Pamir journey', 'A guide to Tajikistan’s mountain lakes'],
             map: ['Pamir Highway route', 'Dushanbe to Khorog', 'Wakhan Valley and Yamchun Fortress', 'Garm Chashma to Ishkashim']
         }
     },
@@ -107,9 +107,9 @@ const TEXT = {
         failed: 'Эълонро захира кардан муяссар нашуд.',
         deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
         options: {
-            places: ['Роҳи Помир', 'Водии Вахон'],
-            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Ҷойҳои таърихӣ ва қалъаҳо'],
-            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамо барои кӯлҳо ва роҳҳои Тоҷикистон'],
+            places: ['Роҳи Помир', 'Водии Вахон', 'Гармчашма', 'Қалъаи Ямчун'],
+            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ'],
+            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар', 'Роҳнамо барои кӯлҳои Тоҷикистон'],
             map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
         }
     }
@@ -256,8 +256,6 @@ function applyLanguage() {
     setStatus('');
 }
 
-/* ---- storage: server first, this browser as a fallback ---- */
-
 function readLocal() {
     try {
         const data = JSON.parse(localStorage.getItem(LIST_KEY));
@@ -373,7 +371,26 @@ async function deleteListing(id) {
     }
 }
 
-/* ---- events ---- */
+// map selection event
+const mapValueButtons = document.querySelectorAll('[data-map-value]');
+mapValueButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.dataset.mapValue;
+        if (value) {
+            inputs.places.value = value;
+            inputs.map.value = value;
+            inputs.places.focus();
+        }
+    });
+});
+
+// file selection visual behaviour
+if (inputs.gallery) {
+    inputs.gallery.addEventListener('change', () => {
+        const fileName = inputs.gallery.files && inputs.gallery.files.length ? inputs.gallery.files[0].name : 'No file chosen';
+        inputs.gallery.title = fileName;
+    });
+}
 
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     lang = btn.dataset.lang;
@@ -398,8 +415,9 @@ form.addEventListener('submit', async event => {
     let firstInvalid = null;
 
     KEYS.forEach(key => {
-        values[key] = inputs[key].value.trim();
-        if (!values[key]) {
+        const value = key === 'gallery' && inputs[key].files && inputs[key].files.length ? inputs[key].files[0].name : inputs[key].value.trim();
+        values[key] = value;
+        if (!value) {
             inputs[key].setAttribute('aria-invalid', 'true');
             firstInvalid = firstInvalid || inputs[key];
         }
