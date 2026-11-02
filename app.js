@@ -39,7 +39,7 @@ const TEXT = {
     brandLabel: 'Админ-панель туризма',
     langLabel: 'Выбор языка',
     placesLabel: 'Поле выбора туристических мест',
-    galleryLabel: 'Поле загрузки фото и видео',
+    galleryLabel: 'Поле загрузки фото и в��део',
     selectedFile: 'Выбранный файл',
     articlesLabel: 'Поле для статей и блога',
     mapLabel: 'Поле интерактивной карты',
@@ -191,6 +191,26 @@ function setStatus(message, kind = '') {
   statusEl.className = 'status' + (kind ? ` is-${kind}` : '');
 }
 
+function getLocalizedValue(key, rawValue) {
+  if (!rawValue || typeof rawValue !== 'string') return rawValue;
+  const text = TEXT;
+  const localeValues = Object.keys(text).map((locale) => text[locale].options?.[key] || []).flat();
+  const normalized = rawValue.trim();
+
+  for (const locale of ['ru', 'tj', 'en']) {
+    const values = text[locale].options?.[key] || [];
+    const index = values.findIndex((value) => value === normalized);
+    if (index >= 0) {
+      const target = text[lang]?.options?.[key];
+      if (Array.isArray(target) && target[index]) {
+        return target[index];
+      }
+    }
+  }
+
+  return normalized;
+}
+
 function getSuggestionOptions(key) {
   const current = Array.isArray(TEXT[lang]?.options?.[key]) ? TEXT[lang].options[key] : [];
   if (current.length) return [...new Set(current)];
@@ -270,7 +290,8 @@ function renderListings() {
     editBtn.addEventListener('click', () => {
       editingId = item.id;
       KEYS.forEach((key) => {
-        inputs[key].value = item[key] || '';
+        const value = getLocalizedValue(key, item[key]);
+        inputs[key].value = value || '';
       });
       updateGalleryField();
       setFormMode();
@@ -307,7 +328,7 @@ function renderListings() {
       const label = document.createElement('span');
       label.textContent = t[key] + ':';
       const value = document.createElement('strong');
-      value.textContent = item[key] || '—';
+      value.textContent = getLocalizedValue(key, item[key]) || '—';
       row.append(label, value);
       meta.appendChild(row);
     });
