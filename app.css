@@ -21,8 +21,6 @@
     --success: #2a8f5d;
     --browser-top: #171d2a;
     --browser-top-2: #232d3d;
-    --tab: rgba(255, 255, 255, 0.06);
-    --tab-active: rgba(255, 255, 255, 0.14);
     --shadow: rgba(18, 32, 37, 0.08);
 }
 
@@ -40,124 +38,6 @@ button,
 input,
 a {
     font: inherit;
-}
-
-.admin-app {
-    min-height: 100vh;
-    background: var(--page-bg);
-}
-
-.browser-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    height: 52px;
-    padding: 0 16px 0 14px;
-    background: linear-gradient(180deg, var(--browser-top), var(--browser-top-2));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.84);
-}
-
-.browser-left,
-.browser-right,
-.address-left,
-.address-actions {
-    display: flex;
-    align-items: center;
-}
-
-.browser-left {
-    min-width: 0;
-    flex: 1;
-    gap: 16px;
-}
-
-.traffic {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-left: 4px;
-}
-
-.dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.dot.red { background: #ea6a5f; }
-.dot.yellow { background: #f3c45b; }
-.dot.green { background: #67c56b; }
-
-.browser-right {
-    gap: 14px;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-}
-
-.browser-status {
-    opacity: 0.7;
-}
-
-.browser-icon {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-.address-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    height: 42px;
-    padding: 0 18px 0 16px;
-    border-bottom: 1px solid rgba(17, 31, 36, 0.08);
-    background: rgba(248, 250, 250, 0.9);
-    color: rgba(24, 48, 58, 0.8);
-}
-
-.address-left {
-    gap: 10px;
-    min-width: 0;
-}
-
-.repo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    background: rgba(31, 41, 55, 0.08);
-    font-size: 12px;
-}
-
-.repo-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(17, 31, 36, 0.9);
-}
-
-.address-actions {
-    gap: 12px;
-    font-size: 14px;
-    color: rgba(17, 31, 36, 0.7);
-}
-
-.avatar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 11px;
-    font-weight: 700;
-    background: #dce9ed;
-    color: #1d3d4a;
 }
 
 .page {
@@ -556,18 +436,6 @@ input[type="file"] {
     .page {
         width: calc(100% - 26px);
         margin-top: 18px;
-    }
-
-    .browser-bar {
-        padding: 0 10px;
-    }
-
-    .window-tabs {
-        gap: 4px;
-    }
-
-    .tab {
-        padding: 0 10px;
     }
 
     .top {
