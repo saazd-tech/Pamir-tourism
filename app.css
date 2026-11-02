@@ -91,32 +91,6 @@ a {
 .dot.yellow { background: #f3c45b; }
 .dot.green { background: #67c56b; }
 
-.window-tabs {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.tab {
-    height: 30px;
-    padding: 0 14px;
-    border: 1px solid transparent;
-    border-radius: 8px 8px 0 0;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 12px;
-    line-height: 1;
-    cursor: default;
-}
-
-.tab.active {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.96);
-}
-
 .browser-right {
     gap: 14px;
     font-size: 12px;
