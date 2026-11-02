@@ -27,6 +27,8 @@ const TEXT = {
         deleteAction: 'Удалить',
         openSite: 'Открыть сайт о Памире',
         chooseFile: 'Выбрать файл',
+        fileNotSelected: 'Файл не выбран',
+        mapSelect: 'На карте',
         fileSelected: 'Выбран файл:',
         fillAll: 'Заполните все четыре поля.',
         saving: 'Сохранение...',
@@ -38,9 +40,9 @@ const TEXT = {
         deletedLocal: 'Объявление удалено только в этом браузере.',
         options: {
             places: ['Памирский тракт', 'Ваханская долина', 'Гарм-Чашма', 'Крепость Ямчун'],
-            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости и маршруты'],
-            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия по Памиру', 'Гид по природным ландшафтам Таджикистана'],
-            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма и путь в сторону Ишкашима']
+            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости и горные маршруты'],
+            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучшая пора для поездки по Памиру', 'Гид по горным озёрам Таджикистана'],
+            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкашим']
         }
     },
     en: {
@@ -65,6 +67,8 @@ const TEXT = {
         deleteAction: 'Delete',
         openSite: 'Open tourism website',
         chooseFile: 'Choose file',
+        fileNotSelected: 'No file selected',
+        mapSelect: 'On map',
         fileSelected: 'Selected file:',
         fillAll: 'Fill in all four fields.',
         saving: 'Saving...',
@@ -103,6 +107,8 @@ const TEXT = {
         deleteAction: 'Нест кардан',
         openSite: 'Сайти Помирро кушоед',
         chooseFile: 'Файли интихоб',
+        fileNotSelected: 'Файл интихоб нашудааст',
+        mapSelect: 'Дар харита',
         fileSelected: 'Файл интихоб шуд:',
         fillAll: 'Ҳар чор майдонро пур кунед.',
         saving: 'Захира карда истодааст...',
@@ -114,8 +120,8 @@ const TEXT = {
         deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
         options: {
             places: ['Роҳи Помир', 'Водии Вахон', 'Гармчашма', 'Қалъаи Ямчун'],
-            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ ва роҳҳо'],
-            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафари Помир', 'Роҳнамо оид ба манзараҳои кӯҳии Тоҷикистон'],
+            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ ва масирҳои кӯҳӣ'],
+            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамо барои кӯлҳои кӯҳии Тоҷикистон'],
             map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
         }
     }
@@ -153,26 +159,32 @@ function setFormMode() {
     button.textContent = editingId ? t.updateListing : t.submit;
     cancelButton.textContent = t.cancel;
     cancelButton.classList.toggle('hidden', !editingId);
+
     if (fileTrigger) fileTrigger.textContent = t.chooseFile;
+
+    document.querySelectorAll('[data-map-value]').forEach(mapButton => {
+        mapButton.textContent = t.mapSelect;
+    });
+
+    if (galleryFileName) {
+        galleryFileName.placeholder = t.fileNotSelected;
+    }
 }
 
 function updateGalleryFileName() {
     if (!galleryFileName) return;
     const file = inputs.gallery.files && inputs.gallery.files[0];
-    if (file) {
-        galleryFileName.value = file.name;
-        galleryFileName.hidden = false;
-    } else {
-        galleryFileName.value = '';
-        galleryFileName.hidden = true;
-    }
+    galleryFileName.value = file ? file.name : '';
+    galleryFileName.placeholder = TEXT[lang].fileNotSelected;
+    galleryFileName.hidden = false;
 }
 
 function resetForm() {
     form.reset();
     if (galleryFileName) {
         galleryFileName.value = '';
-        galleryFileName.hidden = true;
+        galleryFileName.placeholder = TEXT[lang].fileNotSelected;
+        galleryFileName.hidden = false;
     }
     editingId = null;
     setFormMode();
@@ -280,6 +292,10 @@ function applyLanguage() {
     });
 
     if (fileTrigger) fileTrigger.textContent = t.chooseFile;
+    if (galleryFileName) galleryFileName.placeholder = t.fileNotSelected;
+    document.querySelectorAll('[data-map-value]').forEach(button => {
+        button.textContent = t.mapSelect;
+    });
     setFormMode();
     renderListings();
     setStatus('');
@@ -435,7 +451,8 @@ if (inputs.gallery) {
 }
 
 if (galleryFileName) {
-    galleryFileName.hidden = true;
+    galleryFileName.hidden = false;
+    galleryFileName.placeholder = TEXT[lang].fileNotSelected;
 }
 
 document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
@@ -498,7 +515,8 @@ form.addEventListener('submit', async event => {
     setFormMode();
     if (galleryFileName) {
         galleryFileName.value = '';
-        galleryFileName.hidden = true;
+        galleryFileName.placeholder = TEXT[lang].fileNotSelected;
+        galleryFileName.hidden = false;
     }
     await loadListings();
     setStatus(wasEditing ? t.updated : (result.local ? t.savedLocal : t.saved), 'ok');
