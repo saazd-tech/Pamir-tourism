@@ -20,7 +20,7 @@ const TEXT = {
         hintArticles: 'Выберите идею статьи или введите свой заголовок.',
         hintMap: 'Выберите маршрут или введите место на карте.',
         submit: 'Добавить объявление',
-        updateListing: 'Сохранить изменения',
+        updateListing: 'Сохранить измене��ия',
         newAction: '+ Новое',
         cancel: 'Отмена',
         editAction: 'Редактировать',
@@ -36,9 +36,9 @@ const TEXT = {
         deletedLocal: 'Объявление удалено только в этом браузере.',
         options: {
             places: ['Памирский тракт', 'Ваханская долина', 'Гарм-Чашма', 'Крепость Ямчун'],
-            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости'],
-            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для путешествия', 'Гид по горным озёрам Таджикистана'],
-            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишкошим']
+            gallery: ['Горные пейзажи Памира', 'Фотоколлекция Ваханской долины', 'Озёра и реки Таджикистана', 'Исторические крепости Таджикистана'],
+            articles: ['Планируем поездку по Памирскому тракту', 'Что посмотреть в Ваханской долине', 'Лучший сезон для поездки по Памиру', 'Гид по озёрам Таджикистана'],
+            map: ['Маршрут по Памирскому тракту', 'Душанбе — Хорог', 'Ваханская долина и крепость Ямчун', 'Гарм-Чашма — Ишким']
         }
     },
     en: {
@@ -108,8 +108,8 @@ const TEXT = {
         deletedLocal: 'Эълон танҳо дар ин браузер нест карда шуд.',
         options: {
             places: ['Роҳи Помир', 'Водии Вахон', 'Гармчашма', 'Қалъаи Ямчун'],
-            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихӣ'],
-            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар', 'Роҳнамо барои кӯлҳои Тоҷикистон'],
+            gallery: ['Манзараҳои кӯҳии Помир', 'Коллексияи аксҳои водии Вахон', 'Кӯлҳо ва дарёҳои Тоҷикистон', 'Қалъаҳои таърихии Тоҷикистон'],
+            articles: ['Банақшагирии сафар бо роҳи Помир', 'Дар водии Вахон чиро дидан лозим', 'Беҳтарин мавсим барои сафар ба Помир', 'Роҳнамо барои кӯлҳои Тоҷикистон'],
             map: ['Масири роҳи Помир', 'Душанбе — Хоруғ', 'Водии Вахон ва қалъаи Ямчун', 'Гармчашма — Ишкошим']
         }
     }
@@ -123,6 +123,7 @@ const listEl = document.getElementById('listing');
 const emptyEl = document.getElementById('empty');
 const newButton = document.getElementById('btn-new');
 const formTitleEl = document.getElementById('new-title');
+const galleryFileNameInput = document.getElementById('gallery-file-name');
 const inputs = Object.fromEntries(KEYS.map(key => [key, document.getElementById(key)]));
 
 let lang = 'ru';
@@ -149,6 +150,7 @@ function setFormMode() {
 
 function resetForm() {
     form.reset();
+    if (galleryFileNameInput) galleryFileNameInput.value = '';
     editingId = null;
     setFormMode();
     inputs.places.focus();
@@ -183,6 +185,7 @@ function renderListings() {
             KEYS.forEach(key => {
                 inputs[key].value = item[key] ?? '';
             });
+            if (galleryFileNameInput) galleryFileNameInput.value = item.gallery || '';
             setFormMode();
             setStatus('');
             inputs.places.focus();
@@ -387,8 +390,11 @@ const fileLabel = document.querySelector('.file-trigger');
 if (fileLabel) {
     const fileInput = document.getElementById('gallery');
     const updateButtonLabel = () => {
-        const fileName = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0].name : 'Choose File';
-        fileLabel.textContent = fileName;
+        const fileName = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0].name : '';
+        fileLabel.textContent = fileName || 'Choose File';
+        if (galleryFileNameInput) {
+            galleryFileNameInput.value = fileName;
+        }
     };
     fileInput.addEventListener('change', updateButtonLabel);
     updateButtonLabel();
@@ -449,6 +455,7 @@ form.addEventListener('submit', async event => {
     }
 
     form.reset();
+    if (galleryFileNameInput) galleryFileNameInput.value = '';
     const wasEditing = Boolean(editingId);
     editingId = null;
     setFormMode();

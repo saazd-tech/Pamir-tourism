@@ -189,6 +189,12 @@ label {
     box-shadow: 0 0 0 3px rgba(217, 68, 68, 0.12);
 }
 
+.gallery-file-name {
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--ink);
+    cursor: default;
+}
+
 small {
     display: block;
     margin-top: 7px;
