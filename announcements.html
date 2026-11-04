@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b35">
+  <meta name="description" content="Объявления и публикации о путешествиях по Памиру.">
+  <title>Объявления — Путешествия по Памиру</title>
+  <link rel="stylesheet" href="./announcement.css">
+  <link rel="icon" type="image/svg+xml" href="./images/logo.svg">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Навигация">
+      <a class="brand" href="./new.html" aria-label="Pamir — главная"><span aria-hidden="true">△</span> PAMIR<span class="brand-dot">.</span></a>
+      <div class="navigation-links">
+        <a href="./new.html" data-i18n-label="home">Главная</a>
+        <a href="./main.html" data-i18n-label="admin">Админ-панель</a>
+      </div>
+      <div class="language-switch" role="group" aria-label="Выбор языка">
+        <button type="button" data-lang="ru" aria-pressed="true" aria-label="Русский">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+        <button type="button" data-lang="tj" aria-pressed="false" aria-label="Тоҷикӣ">TJ</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <p class="eyebrow" data-i18n-label="eyebrow">ПУБЛИКАЦИИ</p>
+        <h1 id="page-title" data-i18n-label="title">Объявления</h1>
+        <p class="intro" data-i18n-label="intro">Новые места, маршруты и истории, опубликованные командой Памира.</p>
+        <a class="hero-link" href="#latest" data-i18n-label="sectionTitle">Последние объявления <span aria-hidden="true">↓</span></a>
+      </div>
+      <span class="hero-mark" aria-hidden="true">△</span>
+    </section>
+
+    <section class="announcements-section" id="latest" aria-labelledby="announcements-title">
+      <div class="section-heading">
+        <p class="eyebrow eyebrow-dark" data-i18n-label="sectionEyebrow">ОТКРОЙТЕ ДЛЯ СЕБЯ ПАМИР</p>
+        <h2 id="announcements-title" data-i18n-label="sectionTitle">Последние объявления</h2>
+      </div>
+      <p class="empty-state" id="announcements-empty" aria-live="polite">Пока нет опубликованных объявлений.</p>
+      <div class="announcements-list" id="announcements-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="./new.html">PAMIR<span class="brand-dot">.</span></a>
+    <p data-i18n-label="footer">Путешествуйте по Памиру</p>
+  </footer>
+
+  <script src="./announcements.js"></script>
+</body>
+</html>
